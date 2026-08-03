@@ -6,6 +6,19 @@ struct AppDependencies {
     let registry: FeatureRegistry
     let settingsStore: any SettingsStore
     let hasPersistentSettings: Bool
+    let launchAtLoginController: any LaunchAtLoginControlling
+
+    init(
+        registry: FeatureRegistry,
+        settingsStore: any SettingsStore,
+        hasPersistentSettings: Bool,
+        launchAtLoginController: any LaunchAtLoginControlling = PreviewLaunchAtLoginController()
+    ) {
+        self.registry = registry
+        self.settingsStore = settingsStore
+        self.hasPersistentSettings = hasPersistentSettings
+        self.launchAtLoginController = launchAtLoginController
+    }
 
     static var live: Self {
         let registry = FeatureRegistry(factories: [])
@@ -13,7 +26,8 @@ struct AppDependencies {
             return Self(
                 registry: registry,
                 settingsStore: settingsStore,
-                hasPersistentSettings: true
+                hasPersistentSettings: true,
+                launchAtLoginController: LaunchAtLoginController()
             )
         }
 
@@ -30,5 +44,19 @@ struct AppDependencies {
             settingsStore: InMemorySettingsStore(),
             hasPersistentSettings: false
         )
+    }
+}
+
+@MainActor
+final class PreviewLaunchAtLoginController: LaunchAtLoginControlling {
+    private(set) var status: LaunchAtLoginStatus
+
+    init(status: LaunchAtLoginStatus = .disabled) {
+        self.status = status
+    }
+
+    func setEnabled(_ enabled: Bool) -> LaunchAtLoginStatus {
+        status = enabled ? .enabled : .disabled
+        return status
     }
 }

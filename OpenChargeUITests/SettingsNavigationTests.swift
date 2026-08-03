@@ -21,7 +21,8 @@ final class SettingsNavigationTests: XCTestCase {
         for (index, route) in routes.enumerated() {
             app.typeKey(String(index + 1), modifierFlags: .command)
             XCTAssertTrue(
-                settingsWindow.staticTexts["settings.section.\(route)"].waitForExistence(timeout: 2),
+                settingsWindow.descendants(matching: .any)["settings.section.\(route)"]
+                    .waitForExistence(timeout: 2),
                 "Expected settings route \(route)"
             )
         }

@@ -10,6 +10,24 @@ struct SettingsView: View {
             SettingsSidebar(selection: $selection)
                 .navigationSplitViewColumnWidth(min: 170, ideal: 190, max: 230)
         } detail: {
+            detailContent
+        }
+        .frame(minWidth: 720, minHeight: 480)
+        .task {
+            if appModel.loadState == .idle {
+                await appModel.load()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var detailContent: some View {
+        switch selection {
+        case .general:
+            GeneralSettingsView(appModel: appModel)
+        case .about:
+            AboutSettingsView()
+        case .menu, .foundation, .finder, .permissions:
             VStack(alignment: .leading, spacing: 12) {
                 Label(selection.title, systemImage: selection.systemImage)
                     .font(.title2.bold())
@@ -22,12 +40,6 @@ struct SettingsView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .padding(24)
-        }
-        .frame(minWidth: 720, minHeight: 480)
-        .task {
-            if appModel.loadState == .idle {
-                await appModel.load()
-            }
         }
     }
 

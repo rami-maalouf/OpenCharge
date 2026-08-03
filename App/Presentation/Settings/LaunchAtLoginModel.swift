@@ -5,6 +5,7 @@ import OpenChargeCore
 @Observable
 final class LaunchAtLoginModel {
     private let controller: any LaunchAtLoginControlling
+    private var lastRequestedEnabled: Bool?
 
     private(set) var error: LaunchAtLoginError?
     private(set) var isUpdating = false
@@ -28,6 +29,7 @@ final class LaunchAtLoginModel {
     }
 
     func setEnabled(_ enabled: Bool) {
+        lastRequestedEnabled = enabled
         isUpdating = true
         defer { isUpdating = false }
 
@@ -41,5 +43,12 @@ final class LaunchAtLoginModel {
             self.error = .unavailable
             status = controller.status
         }
+    }
+
+    func retry() {
+        guard let lastRequestedEnabled else {
+            return
+        }
+        setEnabled(lastRequestedEnabled)
     }
 }

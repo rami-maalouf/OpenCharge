@@ -264,7 +264,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/LaunchAtLoginControlling.swift`, `Packages/OpenChargeKit/Sources/OpenChargeSystem/LaunchAtLoginController.swift`, `App/Presentation/Settings/LaunchAtLoginModel.swift`, `OpenChargeTests/LaunchAtLoginModelTests.swift`.
   - Commit: `feat: add launch at login support`
 
-- [ ] **P3-06: Complete General and About settings**
+- [x] **P3-06: Complete General and About settings**
   - Depends on: P3-05.
   - Acceptance: General exposes Launch at Login and appearance defaults; About shows version, MIT license, privacy, repository, and Orbit Labs website links.
   - Verify: UI and manually confirm links use HTTPS and open only on user action.
