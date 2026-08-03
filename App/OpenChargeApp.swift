@@ -22,7 +22,8 @@ struct OpenChargeApp: App {
         applicationDelegate.configure(
             lifecycleController: AppLifecycleController(
                 keepAwakeAction: dependencies.keepAwakeAction
-            )
+            ),
+            servicesProvider: ServicesProvider()
         )
     }
 

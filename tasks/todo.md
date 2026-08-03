@@ -389,7 +389,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `FinderExtension/FinderSyncController.swift`, `FinderExtension/Actions/FinderCopyPathHandler.swift`, `FinderExtension/Resources/Localizable.xcstrings`.
   - Commit: `feat: add copy path finder action`
 
-- [ ] **P6-05: Register Copy Path macOS Service**
+- [x] **P6-05: Register Copy Path macOS Service**
   - Depends on: P6-03.
   - Acceptance: Service accepts file URLs, uses the same normalization and action logic, and declares precise send and return types.
   - Verify: BUILD and manually invoke Copy Path from Finder Services and a supported synced folder.

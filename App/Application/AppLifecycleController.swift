@@ -34,9 +34,18 @@ final class OpenChargeApplicationDelegate: NSObject, NSApplicationDelegate {
     private var hasCompletedTerminationCleanup = false
     private var isTerminationPending = false
     private var lifecycleController: AppLifecycleController?
+    private var servicesProvider: ServicesProvider?
 
-    func configure(lifecycleController: AppLifecycleController) {
+    func configure(
+        lifecycleController: AppLifecycleController,
+        servicesProvider: ServicesProvider
+    ) {
         self.lifecycleController = lifecycleController
+        self.servicesProvider = servicesProvider
+    }
+
+    func applicationDidFinishLaunching(_: Notification) {
+        NSApplication.shared.servicesProvider = servicesProvider
     }
 
     func applicationShouldTerminate(
