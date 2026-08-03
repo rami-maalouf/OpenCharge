@@ -229,7 +229,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## P3: App Shell and Settings
 
-- [ ] **P3-01: Build the application composition root**
+- [x] **P3-01: Build the application composition root**
   - Depends on: P2-05.
   - Acceptance: One `@MainActor` root constructs settings, registry, system adapters, and presentation state; previews and tests can inject fakes.
   - Verify: BUILD, TEST, and FORMAT.

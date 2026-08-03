@@ -6,6 +6,16 @@ import SwiftUI
 
 @main
 struct OpenChargeApp: App {
+    @State private var model: AppModel
+
+    init() {
+        self.init(dependencies: .live)
+    }
+
+    init(dependencies: AppDependencies) {
+        _model = State(initialValue: AppModel(dependencies: dependencies))
+    }
+
     var body: some Scene {
         MenuBarExtra("OpenCharge", systemImage: "bolt.fill") {
             Text("OpenCharge")
@@ -18,6 +28,9 @@ struct OpenChargeApp: App {
                 NSApplication.shared.terminate(nil)
             }
             .keyboardShortcut("q")
+            .task {
+                await model.load()
+            }
         }
         .menuBarExtraStyle(.menu)
     }
