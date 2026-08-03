@@ -1,6 +1,7 @@
 # OpenCharge Foundation + Finder Task List
 
-- Status: Draft for human review
+- Status: Approved
+- Approved: August 3, 2026
 - Task-list version: 1
 - Created: August 3, 2026
 - Specification: `docs/specs/001-opencharge-foundation-finder.md`
@@ -953,9 +954,9 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `tasks/audits/release-readiness.md`, `tasks/checkpoints/foundation-finder-complete.md`, `README.md`.
   - Commit: `docs: complete foundation and finder release review`
 
-## Task-List Approval Criteria
+## Approved Task-List Decisions
 
-Implementation can begin when the human confirms:
+The human approved the task list on August 3, 2026, confirming:
 
 1. Tasks are granular enough for focused AI-agent sessions.
 2. Dependencies and parallel waves match the approved plan.
@@ -965,4 +966,4 @@ Implementation can begin when the human confirms:
 6. Feasibility decision gates correctly pause for spec revisions.
 7. No task silently crosses an Ask First or Never boundary.
 
-After approval, change Status to Approved and execute P0-01 first. Do not skip dependencies or begin later phases early.
+Implementation begins with P0-01. Do not skip dependencies or begin later phases early.
