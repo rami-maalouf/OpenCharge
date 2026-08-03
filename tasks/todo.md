@@ -236,7 +236,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Application/AppDependencies.swift`, `App/Application/AppModel.swift`, `App/OpenChargeApp.swift`, `OpenChargeTests/AppCompositionTests.swift`.
   - Commit: `feat: add application composition root`
 
-- [ ] **P3-02: Implement the menu model and base menu**
+- [x] **P3-02: Implement the menu model and base menu**
   - Depends on: P3-01.
   - Acceptance: Menu always exposes Settings, permission health, About, and Quit; feature sections derive from registry state and failures do not break rendering.
   - Verify: `xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -destination 'platform=macOS' -only-testing:OpenChargeTests/MenuModelTests test`, then BUILD and FORMAT.
