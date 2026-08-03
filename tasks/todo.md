@@ -162,7 +162,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/FeatureAvailability.swift`, `Packages/OpenChargeKit/Sources/OpenChargeCore/FeatureHealth.swift`, `Packages/OpenChargeKit/Tests/OpenChargeCoreTests/FeatureStateTests.swift`.
   - Commit: `feat: model feature availability and health`
 
-- [ ] **P1-03: Define permission domain contracts**
+- [x] **P1-03: Define permission domain contracts**
   - Depends on: P1-02.
   - Acceptance: Permission kinds and states cover not determined, denied, restricted, granted, and unavailable without importing system frameworks.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter PermissionStateTests`, then PACKAGE and FORMAT.
