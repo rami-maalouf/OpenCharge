@@ -375,7 +375,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeFeatures/CopyPathAction.swift`, `Packages/OpenChargeKit/Tests/OpenChargeFeaturesTests/CopyPathActionTests.swift`.
   - Commit: `feat: implement copy path action`
 
-- [ ] **P6-03: Add pasteboard adapter**
+- [x] **P6-03: Add pasteboard adapter**
   - Depends on: P6-02.
   - Acceptance: Adapter writes only explicit values, clears stale types on successful writes, retains no history, and exposes failures without logging content.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter PasteboardClientTests`, then PACKAGE and BUILD.
