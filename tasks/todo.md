@@ -155,7 +155,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/FeatureID.swift`, `Packages/OpenChargeKit/Sources/OpenChargeCore/FeatureDescriptor.swift`, `Packages/OpenChargeKit/Tests/OpenChargeCoreTests/FeatureDescriptorTests.swift`.
   - Commit: `feat: define feature identity contracts`
 
-- [ ] **P1-02: Model feature availability and health**
+- [x] **P1-02: Model feature availability and health**
   - Depends on: P1-01.
   - Acceptance: Domain distinguishes available, unsupported, missing permission, disabled, and unhealthy states with typed recovery information.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter FeatureStateTests`, then PACKAGE and FORMAT.
