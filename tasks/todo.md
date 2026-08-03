@@ -169,7 +169,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/PermissionKind.swift`, `Packages/OpenChargeKit/Sources/OpenChargeCore/PermissionState.swift`, `Packages/OpenChargeKit/Tests/OpenChargeCoreTests/PermissionStateTests.swift`.
   - Commit: `feat: define permission domain contracts`
 
-- [ ] **P1-04: Define action execution contracts**
+- [x] **P1-04: Define action execution contracts**
   - Depends on: P1-03.
   - Acceptance: Requests, typed results, progress, cancellation, and errors represent invalid input, unavailable, permission, conflict, partial success, cancellation, and system failure.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter ActionContractTests`, then PACKAGE and FORMAT.
