@@ -111,7 +111,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Package.swift`, `Packages/OpenChargeKit/Sources/OpenChargeCore/OpenChargeCore.swift`, `Packages/OpenChargeKit/Sources/OpenChargeSystem/OpenChargeSystem.swift`, `Packages/OpenChargeKit/Sources/OpenChargeFeatures/OpenChargeFeatures.swift`, `Packages/OpenChargeKit/Tests/OpenChargeCoreTests/PackageSmokeTests.swift`.
   - Commit: `chore: scaffold opencharge swift package`
 
-- [ ] **P0-04: Create the menu bar app target**
+- [x] **P0-04: Create the menu bar app target**
   - Depends on: P0-03.
   - Acceptance: Xcode project uses file-system synchronized source groups, resolves OpenChargeKit, builds a minimal `LSUIElement` menu bar app, and has a shared OpenCharge scheme.
   - Verify: BUILD and launch the Debug app once to confirm the menu item appears without a Dock icon.
