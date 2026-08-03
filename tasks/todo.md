@@ -368,7 +368,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/FileSelection.swift`, `Packages/OpenChargeKit/Sources/OpenChargeFeatures/FileSelectionNormalizer.swift`, `Packages/OpenChargeKit/Tests/OpenChargeFeaturesTests/FileSelectionTests.swift`.
   - Commit: `feat: normalize file action selections`
 
-- [ ] **P6-02: Implement Copy Path action**
+- [x] **P6-02: Implement Copy Path action**
   - Depends on: P6-01.
   - Acceptance: Empty selection has no pasteboard side effect; valid paths are absolute and newline-separated in input order; mixed invalid input yields partial results.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter CopyPathActionTests`, then PACKAGE and FORMAT.
