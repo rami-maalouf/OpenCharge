@@ -294,7 +294,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeSystem/ScreenRecordingPermissionProvider.swift`, `Packages/OpenChargeKit/Tests/OpenChargeSystemTests/ScreenRecordingPermissionTests.swift`.
   - Commit: `feat: add screen recording permission adapter`
 
-- [ ] **P4-03: Add Accessibility permission adapter**
+- [x] **P4-03: Add Accessibility permission adapter**
   - Depends on: P4-01.
   - Acceptance: Status check does not prompt; explicit request path is isolated and returns a recoverable state.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter AccessibilityPermissionTests`, then PACKAGE and BUILD.
