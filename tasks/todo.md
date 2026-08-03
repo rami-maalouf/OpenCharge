@@ -104,7 +104,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `.swiftformat`, `scripts/check.sh`.
   - Commit: `chore: add repository verification tooling`
 
-- [ ] **P0-03: Scaffold the OpenChargeKit package**
+- [x] **P0-03: Scaffold the OpenChargeKit package**
   - Depends on: P0-02.
   - Acceptance: Swift package exposes Core, System, and Features library products with macOS 26 and Swift 6 settings; a smoke test proves the package resolves.
   - Verify: PACKAGE and FORMAT.
