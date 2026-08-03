@@ -317,7 +317,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## P5: Keep Awake Vertical Slice
 
-- [ ] **P5-01: Define Keep Awake behavior and tests**
+- [x] **P5-01: Define Keep Awake behavior and tests**
   - Depends on: P4-05.
   - Acceptance: Feature distinguishes idle sleep and display sleep assertions, exposes state, and rolls back model state on controller failure.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter KeepAwakeActionTests`, then PACKAGE and FORMAT.
