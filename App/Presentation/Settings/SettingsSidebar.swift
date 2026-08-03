@@ -14,7 +14,7 @@ struct SettingsSidebar: View {
             }
             .buttonStyle(.plain)
             .keyboardShortcut(section.keyboardKey, modifiers: .command)
-            .accessibilityIdentifier("settings.sidebar.\(section.rawValue)")
+            .accessibilityIdentifier(AccessibilityID.Settings.sidebar(section))
             .listRowBackground(
                 selection == section
                     ? Color.accentColor.opacity(0.16)

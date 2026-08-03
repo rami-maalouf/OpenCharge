@@ -1,0 +1,114 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "About" : {
+
+    },
+    "About OpenCharge" : {
+
+    },
+    "An open-source macOS utility from Orbit Labs." : {
+
+    },
+    "Appearance" : {
+
+    },
+    "Approval is required in System Settings before OpenCharge can launch at login." : {
+
+    },
+    "Choose which actions appear in the menu bar." : {
+
+    },
+    "Configure Finder actions and extension behavior." : {
+
+    },
+    "Configure everyday OpenCharge actions." : {
+
+    },
+    "Control how OpenCharge starts and appears." : {
+
+    },
+    "Dark" : {
+
+    },
+    "Developer" : {
+
+    },
+    "Finder" : {
+
+    },
+    "Foundation" : {
+
+    },
+    "General" : {
+
+    },
+    "Launch OpenCharge at login" : {
+
+    },
+    "Learn about OpenCharge, privacy, and this open-source project." : {
+
+    },
+    "Light" : {
+
+    },
+    "MIT License" : {
+
+    },
+    "Menu" : {
+
+    },
+    "OpenCharge" : {
+
+    },
+    "OpenCharge Repository" : {
+
+    },
+    "OpenCharge could not update Launch at Login." : {
+
+    },
+    "Orbit Labs" : {
+
+    },
+    "Permissions" : {
+
+    },
+    "Permissions and Health" : {
+
+    },
+    "Permissions and Health (%lld issues)" : {
+
+    },
+    "Permissions and Health (1 issue)" : {
+
+    },
+    "Permissions and Health (Settings Unavailable)" : {
+
+    },
+    "Privacy" : {
+
+    },
+    "Quit OpenCharge" : {
+
+    },
+    "Review permissions and recovery guidance." : {
+
+    },
+    "Settings..." : {
+
+    },
+    "Startup" : {
+
+    },
+    "System" : {
+
+    },
+    "Try Again" : {
+
+    },
+    "Version %@" : {
+
+    }
+  },
+  "version" : "1.2"
+}

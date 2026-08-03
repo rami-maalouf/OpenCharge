@@ -34,6 +34,7 @@ struct MenuContentView: View {
         } label: {
             Label(healthTitle, systemImage: healthSystemImage)
         }
+        .accessibilityIdentifier(AccessibilityID.Menu.health)
 
         Divider()
 
@@ -41,10 +42,12 @@ struct MenuContentView: View {
             openSettings()
         }
         .keyboardShortcut(",")
+        .accessibilityIdentifier(AccessibilityID.Menu.settings)
 
         Button("About OpenCharge") {
             NSApplication.shared.orderFrontStandardAboutPanel(nil)
         }
+        .accessibilityIdentifier(AccessibilityID.Menu.about)
 
         Divider()
 
@@ -52,6 +55,7 @@ struct MenuContentView: View {
             NSApplication.shared.terminate(nil)
         }
         .keyboardShortcut("q")
+        .accessibilityIdentifier(AccessibilityID.Menu.quit)
         .task {
             await appModel.load()
         }
@@ -60,11 +64,15 @@ struct MenuContentView: View {
     private var healthTitle: String {
         switch model.health {
         case let .degraded(issueCount):
-            "Permissions and Health (\(issueCount) issue\(issueCount == 1 ? "" : "s"))"
+            if issueCount == 1 {
+                String(localized: "Permissions and Health (1 issue)")
+            } else {
+                String(localized: "Permissions and Health (\(issueCount) issues)")
+            }
         case .healthy:
-            "Permissions and Health"
+            String(localized: "Permissions and Health")
         case .settingsUnavailable:
-            "Permissions and Health (Settings Unavailable)"
+            String(localized: "Permissions and Health (Settings Unavailable)")
         }
     }
 
@@ -82,13 +90,13 @@ private extension FeatureCategory {
     var menuTitle: String {
         switch self {
         case .developer:
-            "Developer"
+            String(localized: "Developer")
         case .finder:
-            "Finder"
+            String(localized: "Finder")
         case .foundation:
-            "Foundation"
+            String(localized: "Foundation")
         case .system:
-            "System"
+            String(localized: "System")
         }
     }
 }

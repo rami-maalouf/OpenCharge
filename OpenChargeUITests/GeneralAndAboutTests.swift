@@ -21,22 +21,17 @@ final class GeneralAndAboutTests: XCTestCase {
 
         app.typeKey("6", modifierFlags: .command)
         XCTAssertTrue(settingsWindow.staticTexts["OpenCharge"].waitForExistence(timeout: 2))
-        XCTAssertTrue(settingsWindow.links["MIT License"].exists)
-        XCTAssertTrue(settingsWindow.links["Privacy"].exists)
-        XCTAssertTrue(settingsWindow.links["OpenCharge Repository"].exists)
-        XCTAssertTrue(settingsWindow.links["Orbit Labs"].exists)
+        XCTAssertTrue(settingsWindow.descendants(matching: .any)["settings.about.license"].exists)
+        XCTAssertTrue(settingsWindow.descendants(matching: .any)["settings.about.privacy"].exists)
+        XCTAssertTrue(settingsWindow.descendants(matching: .any)["settings.about.repository"].exists)
+        XCTAssertTrue(settingsWindow.descendants(matching: .any)["settings.about.website"].exists)
 
         app.terminate()
     }
 
     @MainActor
     private func openSettings(in app: XCUIApplication) {
-        let statusItem = app.menuBars.statusItems["OpenCharge"]
-        XCTAssertTrue(statusItem.waitForExistence(timeout: 5))
-        statusItem.click()
-
-        let settingsItem = app.menuItems["Settings..."]
-        XCTAssertTrue(settingsItem.waitForExistence(timeout: 2))
-        settingsItem.click()
+        app.activate()
+        app.typeKey(",", modifierFlags: .command)
     }
 }

@@ -271,7 +271,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Presentation/Settings/GeneralSettingsView.swift`, `App/Presentation/Settings/AboutSettingsView.swift`, `OpenChargeUITests/GeneralAndAboutTests.swift`.
   - Commit: `feat: add general and about settings`
 
-- [ ] **P3-07: Establish strings and accessibility identifiers**
+- [x] **P3-07: Establish strings and accessibility identifiers**
   - Depends on: P3-06.
   - Acceptance: Existing user-facing strings live in the String Catalog and stable identifiers cover menu and Settings UI tests.
   - Verify: UI, FORMAT, and manually inspect VoiceOver names for the shell.

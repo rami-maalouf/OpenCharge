@@ -20,16 +20,17 @@ struct FeatureSettingsRow: View {
                 Spacer(minLength: 16)
 
                 Toggle(
-                    "",
                     isOn: Binding(
                         get: { model.isEnabled },
                         set: onSetEnabled
                     )
-                )
+                ) {
+                    EmptyView()
+                }
                 .labelsHidden()
                 .disabled(!model.canChangeEnablement)
                 .accessibilityLabel(Text(LocalizedStringKey(model.titleKey)))
-                .accessibilityIdentifier("feature.toggle.\(model.id.rawValue)")
+                .accessibilityIdentifier(AccessibilityID.featureToggle(model.id))
             }
 
             if let availabilityMessageKey = model.availabilityMessageKey {
@@ -49,12 +50,12 @@ struct FeatureSettingsRow: View {
                 } label: {
                     Text(LocalizedStringKey(recovery.titleKey))
                 }
-                .accessibilityIdentifier("feature.recovery.\(model.id.rawValue)")
+                .accessibilityIdentifier(AccessibilityID.featureRecovery(model.id))
             }
         }
         .padding(.vertical, 8)
         .accessibilityElement(children: .contain)
-        .accessibilityIdentifier("feature.row.\(model.id.rawValue)")
+        .accessibilityIdentifier(AccessibilityID.featureRow(model.id))
     }
 
     private func statusLabel(key: String, systemImage: String) -> some View {

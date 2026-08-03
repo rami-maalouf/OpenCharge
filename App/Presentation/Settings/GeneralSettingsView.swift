@@ -24,7 +24,8 @@ struct GeneralSettingsView: View {
                     "Launch OpenCharge at login",
                     isOn: $launchAtLoginEnabled
                 )
-                .accessibilityIdentifier("settings.general.launchAtLogin")
+                .accessibilityLabel("Launch OpenCharge at login")
+                .accessibilityIdentifier(AccessibilityID.Settings.launchAtLogin)
                 .disabled(
                     appModel.launchAtLogin.isUpdating
                         || isLaunchAtLoginUnavailable
@@ -61,12 +62,13 @@ struct GeneralSettingsView: View {
                     Text("Dark").tag("dark")
                 }
                 .pickerStyle(.segmented)
-                .accessibilityIdentifier("settings.general.appearance")
+                .accessibilityLabel("Appearance")
+                .accessibilityIdentifier(AccessibilityID.Settings.appearance)
             }
         }
         .formStyle(.grouped)
         .navigationTitle("General")
-        .accessibilityIdentifier("settings.section.general")
+        .accessibilityIdentifier(AccessibilityID.Settings.section(.general))
         .onChange(of: appModel.launchAtLogin.status) { _, _ in
             launchAtLoginEnabled = appModel.launchAtLogin.isEnabled
         }

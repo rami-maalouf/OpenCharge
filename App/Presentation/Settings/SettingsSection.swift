@@ -15,17 +15,17 @@ enum SettingsSection: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .general:
-            "General"
+            String(localized: "General")
         case .menu:
-            "Menu"
+            String(localized: "Menu")
         case .foundation:
-            "Foundation"
+            String(localized: "Foundation")
         case .finder:
-            "Finder"
+            String(localized: "Finder")
         case .permissions:
-            "Permissions"
+            String(localized: "Permissions")
         case .about:
-            "About"
+            String(localized: "About")
         }
     }
 

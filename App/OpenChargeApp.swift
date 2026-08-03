@@ -22,6 +22,7 @@ struct OpenChargeApp: App {
         } label: {
             Label("OpenCharge", systemImage: "bolt.fill")
                 .accessibilityLabel("OpenCharge")
+                .accessibilityIdentifier(AccessibilityID.menuBar)
         }
         .menuBarExtraStyle(.menu)
 

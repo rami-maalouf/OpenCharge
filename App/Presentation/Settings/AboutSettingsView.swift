@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct AboutSettingsView: View {
+    @Environment(\.openURL) private var openURL
+
     private let licenseURL = URL(string: "https://github.com/rami-maalouf/OpenCharge/blob/main/LICENSE")!
     private let orbitLabsURL = URL(string: "https://orbitlabs.studio")!
     private let privacyURL = URL(string: "https://github.com/rami-maalouf/OpenCharge/blob/main/PRIVACY.md")!
@@ -16,6 +18,7 @@ struct AboutSettingsView: View {
             VStack(spacing: 4) {
                 Text("OpenCharge")
                     .font(.title.bold())
+                    .accessibilityIdentifier(AccessibilityID.Settings.section(.about))
                 Text("Version \(version)")
                     .foregroundStyle(.secondary)
             }
@@ -24,10 +27,34 @@ struct AboutSettingsView: View {
                 .foregroundStyle(.secondary)
 
             HStack(spacing: 18) {
-                Link("MIT License", destination: licenseURL)
-                Link("Privacy", destination: privacyURL)
-                Link("OpenCharge Repository", destination: repositoryURL)
-                Link("Orbit Labs", destination: orbitLabsURL)
+                Button("MIT License") {
+                    openURL(licenseURL)
+                }
+                .buttonStyle(.link)
+                .accessibilityAddTraits(.isLink)
+                .accessibilityLabel("MIT License")
+                .accessibilityIdentifier(AccessibilityID.Settings.aboutLicense)
+                Button("Privacy") {
+                    openURL(privacyURL)
+                }
+                .buttonStyle(.link)
+                .accessibilityAddTraits(.isLink)
+                .accessibilityLabel("Privacy")
+                .accessibilityIdentifier(AccessibilityID.Settings.aboutPrivacy)
+                Button("OpenCharge Repository") {
+                    openURL(repositoryURL)
+                }
+                .buttonStyle(.link)
+                .accessibilityAddTraits(.isLink)
+                .accessibilityLabel("OpenCharge Repository")
+                .accessibilityIdentifier(AccessibilityID.Settings.aboutRepository)
+                Button("Orbit Labs") {
+                    openURL(orbitLabsURL)
+                }
+                .buttonStyle(.link)
+                .accessibilityAddTraits(.isLink)
+                .accessibilityLabel("Orbit Labs")
+                .accessibilityIdentifier(AccessibilityID.Settings.aboutWebsite)
             }
 
             Spacer()
@@ -35,7 +62,6 @@ struct AboutSettingsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(32)
         .navigationTitle("About")
-        .accessibilityIdentifier("settings.section.about")
     }
 
     private var version: String {
