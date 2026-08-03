@@ -17,9 +17,16 @@ struct OpenChargeApp: App {
     }
 
     var body: some Scene {
-        MenuBarExtra("OpenCharge", systemImage: "bolt.fill") {
+        MenuBarExtra {
             MenuContentView(appModel: model)
+        } label: {
+            Label("OpenCharge", systemImage: "bolt.fill")
+                .accessibilityLabel("OpenCharge")
         }
         .menuBarExtraStyle(.menu)
+
+        Settings {
+            SettingsView(appModel: model)
+        }
     }
 }

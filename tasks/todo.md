@@ -243,7 +243,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Presentation/Menu/MenuModel.swift`, `App/Presentation/Menu/MenuContentView.swift`, `OpenChargeTests/MenuModelTests.swift`.
   - Commit: `feat: add registry driven menu`
 
-- [ ] **P3-03: Add Settings routes and navigation shell**
+- [x] **P3-03: Add Settings routes and navigation shell**
   - Depends on: P3-02.
   - Acceptance: General, Menu, Foundation, Finder, Permissions, and About routes are keyboard reachable, stable, and open from the menu.
   - Verify: UI and manually navigate every section with keyboard only.
