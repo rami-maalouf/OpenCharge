@@ -8,11 +8,14 @@ OpenCharge is inspired by the broader macOS utility category. It uses its own im
 
 ## Project status
 
-The product specification and implementation plan are approved. Application scaffolding is in progress.
+The Milestone 0 implementation is complete. Automated package, application, Release, and Universal 2 verification passes. The architecture checkpoint remains open until its foreground Finder, Services, App Intents, appearance, and accessibility checklist is completed in a dedicated desktop session.
 
 - [Foundation + Finder specification](docs/specs/001-opencharge-foundation-finder.md)
 - [Implementation plan](tasks/plan.md)
 - [Executable task list](tasks/todo.md)
+- [Architecture scaffold checkpoint](tasks/checkpoints/C0-architecture-scaffold.md)
+- [Process boundaries](docs/architecture/process-boundaries.md)
+- [Adding a feature](docs/architecture/adding-a-feature.md)
 - [Feature research](docs/research/supercharge-feature-research-2026-08-02.md)
 
 ## Requirements
@@ -22,7 +25,16 @@ The product specification and implementation plan are approved. Application scaf
 - Swift 6
 - SwiftFormat
 
-Build and test commands will become available with the application scaffold.
+## Build and test
+
+```sh
+swiftformat --lint .
+swift test --package-path Packages/OpenChargeKit
+xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -configuration Debug -destination 'platform=macOS' build-for-testing
+xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -configuration Debug -destination 'platform=macOS' -skip-testing:OpenChargeUITests test-without-building
+```
+
+`./scripts/check.sh` adds UI automation. Run it only in a dedicated desktop session because macOS UI tests can take focus and move the system pointer.
 
 ## Principles
 
