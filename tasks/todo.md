@@ -352,7 +352,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Intents/GetKeepAwakeIntent.swift`, `App/Intents/SetKeepAwakeIntent.swift`, `OpenChargeTests/KeepAwakeIntentTests.swift`.
   - Commit: `feat: add keep awake app intents`
 
-- [ ] **P5-06: Verify Keep Awake lifecycle cleanup**
+- [x] **P5-06: Verify Keep Awake lifecycle cleanup**
   - Depends on: P5-05.
   - Acceptance: App termination path releases assertions and tests prove repeated enable, reconfigure, disable, and terminate sequences cannot leak handles.
   - Verify: TEST, BUILD, and manually confirm `pmset -g assertions` returns to baseline after quitting.

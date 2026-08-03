@@ -6,6 +6,9 @@ import SwiftUI
 
 @main
 struct OpenChargeApp: App {
+    @NSApplicationDelegateAdaptor(OpenChargeApplicationDelegate.self)
+    private var applicationDelegate
+
     @State private var model: AppModel
 
     init() {
@@ -16,6 +19,11 @@ struct OpenChargeApp: App {
         UITestDisplayRouter.installIfRequested()
         KeepAwakeIntentDependency.register(dependencies.keepAwakeAction)
         _model = State(initialValue: AppModel(dependencies: dependencies))
+        applicationDelegate.configure(
+            lifecycleController: AppLifecycleController(
+                keepAwakeAction: dependencies.keepAwakeAction
+            )
+        )
     }
 
     var body: some Scene {
