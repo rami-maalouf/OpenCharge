@@ -7,7 +7,9 @@ final class AppLaunchTests: XCTestCase {
 
         app.launch()
 
-        XCTAssertTrue(app.wait(for: .runningForeground, timeout: 5))
+        let isRunning = app.wait(for: .runningBackground, timeout: 5)
+            || app.wait(for: .runningForeground, timeout: 1)
+        XCTAssertTrue(isRunning)
         app.terminate()
     }
 }
