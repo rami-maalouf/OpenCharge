@@ -7,6 +7,27 @@
     "About OpenCharge" : {
 
     },
+    "Access is available for features that need it." : {
+
+    },
+    "Access is off. Request access or review the setting in System Settings." : {
+
+    },
+    "Accessibility" : {
+
+    },
+    "Adds OpenCharge actions to Finder. Finder controls whether the extension is enabled." : {
+
+    },
+    "Allows a specific feature to control another app only when that feature needs it." : {
+
+    },
+    "Allows explicitly enabled keyboard improvements outside text entry." : {
+
+    },
+    "Allows screen selection, OCR, and QR recognition when you run those actions." : {
+
+    },
     "An open-source macOS utility from Orbit Labs." : {
 
     },
@@ -14,6 +35,15 @@
 
     },
     "Approval is required in System Settings before OpenCharge can launch at login." : {
+
+    },
+    "Automation" : {
+
+    },
+    "Checking" : {
+
+    },
+    "Checking current status without requesting access." : {
 
     },
     "Choose which actions appear in the menu bar." : {
@@ -31,16 +61,25 @@
     "Dark" : {
 
     },
+    "Denied" : {
+
+    },
     "Developer" : {
 
     },
     "Finder" : {
 
     },
+    "Finder Integration" : {
+
+    },
     "Foundation" : {
 
     },
     "General" : {
+
+    },
+    "Granted" : {
 
     },
     "Launch OpenCharge at login" : {
@@ -55,7 +94,25 @@
     "MIT License" : {
 
     },
+    "Manage Finder Extensions" : {
+
+    },
     "Menu" : {
+
+    },
+    "No current feature needs Automation. OpenCharge will ask for a specific app only when required." : {
+
+    },
+    "Not Currently Required" : {
+
+    },
+    "Not Requested" : {
+
+    },
+    "Open Accessibility Settings" : {
+
+    },
+    "Open Screen Recording Settings" : {
 
     },
     "OpenCharge" : {
@@ -64,10 +121,16 @@
     "OpenCharge Repository" : {
 
     },
+    "OpenCharge checks status silently and requests access only after you choose an action." : {
+
+    },
     "OpenCharge could not update Launch at Login." : {
 
     },
     "Orbit Labs" : {
+
+    },
+    "Permission issues affect only related features." : {
 
     },
     "Permissions" : {
@@ -91,7 +154,19 @@
     "Quit OpenCharge" : {
 
     },
+    "Request Access" : {
+
+    },
+    "Restricted" : {
+
+    },
     "Review permissions and recovery guidance." : {
+
+    },
+    "Review the explanation above, then request access when you are ready." : {
+
+    },
+    "Screen Recording" : {
 
     },
     "Settings..." : {
@@ -100,10 +175,19 @@
     "Startup" : {
 
     },
+    "Status is unavailable. Try the recovery action or return after changing System Settings." : {
+
+    },
     "System" : {
 
     },
+    "This Mac restricts access. Other OpenCharge features remain available." : {
+
+    },
     "Try Again" : {
+
+    },
+    "Unavailable" : {
 
     },
     "Version %@" : {

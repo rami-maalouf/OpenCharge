@@ -1,3 +1,4 @@
+import Foundation
 import OpenChargeCore
 import OpenChargeSystem
 
@@ -7,17 +8,20 @@ struct AppDependencies {
     let settingsStore: any SettingsStore
     let hasPersistentSettings: Bool
     let launchAtLoginController: any LaunchAtLoginControlling
+    let permissionCapabilities: [PermissionCapability]
 
     init(
         registry: FeatureRegistry,
         settingsStore: any SettingsStore,
         hasPersistentSettings: Bool,
-        launchAtLoginController: any LaunchAtLoginControlling = PreviewLaunchAtLoginController()
+        launchAtLoginController: any LaunchAtLoginControlling = PreviewLaunchAtLoginController(),
+        permissionCapabilities: [PermissionCapability] = PermissionCapability.preview
     ) {
         self.registry = registry
         self.settingsStore = settingsStore
         self.hasPersistentSettings = hasPersistentSettings
         self.launchAtLoginController = launchAtLoginController
+        self.permissionCapabilities = permissionCapabilities
     }
 
     static var live: Self {
@@ -27,14 +31,20 @@ struct AppDependencies {
                 registry: registry,
                 settingsStore: settingsStore,
                 hasPersistentSettings: true,
-                launchAtLoginController: LaunchAtLoginController()
+                launchAtLoginController: LaunchAtLoginController(),
+                permissionCapabilities: PermissionCapability.live(
+                    arguments: ProcessInfo.processInfo.arguments
+                )
             )
         }
 
         return Self(
             registry: registry,
             settingsStore: InMemorySettingsStore(),
-            hasPersistentSettings: false
+            hasPersistentSettings: false,
+            permissionCapabilities: PermissionCapability.live(
+                arguments: ProcessInfo.processInfo.arguments
+            )
         )
     }
 

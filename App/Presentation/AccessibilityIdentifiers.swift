@@ -28,6 +28,28 @@ enum AccessibilityID {
         }
     }
 
+    enum Permissions {
+        static func explanation(_ kind: PermissionKind) -> String {
+            "permissions.explanation.\(kind.rawValue)"
+        }
+
+        static func recovery(_ kind: PermissionKind) -> String {
+            "permissions.action.\(kind.rawValue).recovery"
+        }
+
+        static func request(_ kind: PermissionKind) -> String {
+            "permissions.action.\(kind.rawValue).request"
+        }
+
+        static func row(_ kind: PermissionKind) -> String {
+            "permissions.row.\(kind.rawValue)"
+        }
+
+        static func status(_ kind: PermissionKind, state: PermissionState) -> String {
+            "permissions.status.\(kind.rawValue).\(state.accessibilityComponent)"
+        }
+    }
+
     static func featureRecovery(_ id: FeatureID) -> String {
         "feature.recovery.\(id.rawValue)"
     }
@@ -38,5 +60,22 @@ enum AccessibilityID {
 
     static func featureToggle(_ id: FeatureID) -> String {
         "feature.toggle.\(id.rawValue)"
+    }
+}
+
+private extension PermissionState {
+    var accessibilityComponent: String {
+        switch self {
+        case .denied:
+            "denied"
+        case .granted:
+            "granted"
+        case .notDetermined:
+            "notDetermined"
+        case .restricted:
+            "restricted"
+        case .unavailable:
+            "unavailable"
+        }
     }
 }

@@ -308,7 +308,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeSystem/FinderExtensionStatusProvider.swift`, `Packages/OpenChargeKit/Tests/OpenChargeSystemTests/FinderExtensionStatusTests.swift`.
   - Commit: `feat: report finder extension status`
 
-- [ ] **P4-05: Build Permissions settings and lifecycle refresh**
+- [x] **P4-05: Build Permissions settings and lifecycle refresh**
   - Depends on: P4-02, P4-03, P4-04.
   - Acceptance: UI explains each permission before request, opens recovery locations, refreshes after app activation, and leaves unrelated features usable.
   - Verify: UI and manually exercise deterministic denied and granted launch arguments without displaying a real prompt.

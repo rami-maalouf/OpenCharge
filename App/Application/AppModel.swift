@@ -14,6 +14,7 @@ final class AppModel {
     let registry: FeatureRegistry
     let hasPersistentSettings: Bool
     let launchAtLogin: LaunchAtLoginModel
+    let permissions: PermissionsModel
 
     private let settingsStore: any SettingsStore
 
@@ -25,6 +26,7 @@ final class AppModel {
         settingsStore = dependencies.settingsStore
         hasPersistentSettings = dependencies.hasPersistentSettings
         launchAtLogin = LaunchAtLoginModel(controller: dependencies.launchAtLoginController)
+        permissions = PermissionsModel(capabilities: dependencies.permissionCapabilities)
     }
 
     func load() async {
@@ -46,5 +48,13 @@ final class AppModel {
         } catch {
             loadState = .failed
         }
+    }
+
+    func refreshPermissions() async {
+        await permissions.refresh()
+    }
+
+    func didBecomeActive() async {
+        await refreshPermissions()
     }
 }

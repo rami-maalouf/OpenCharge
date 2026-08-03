@@ -27,7 +27,9 @@ struct SettingsView: View {
             GeneralSettingsView(appModel: appModel)
         case .about:
             AboutSettingsView()
-        case .menu, .foundation, .finder, .permissions:
+        case .permissions:
+            PermissionsView(appModel: appModel)
+        case .menu, .foundation, .finder:
             VStack(alignment: .leading, spacing: 12) {
                 Label(selection.title, systemImage: selection.systemImage)
                     .font(.title2.bold())
