@@ -1,0 +1,32 @@
+# macos
+.DS_Store
+
+# xcode user state
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# build products
+.build/
+build/
+DerivedData/
+*.dSYM
+*.dSYM.zip
+
+# swift package manager
+.swiftpm/
+Package.resolved
+
+# local signing and secrets
+*.cer
+*.p12
+*.provisionprofile
+*.mobileprovision
+.env
+.env.*
+
+# editor state
+.idea/
+*.swp
+*~

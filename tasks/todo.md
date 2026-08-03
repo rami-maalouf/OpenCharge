@@ -90,7 +90,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## P0: Repository and Toolchain Bootstrap
 
-- [ ] **P0-01: Add public repository documents**
+- [x] **P0-01: Add public repository documents**
   - Depends on: none.
   - Acceptance: MIT license, project overview, contribution expectations, privacy promises, and ignored local artifacts are documented without claiming unimplemented features.
   - Verify: DOCS and manually confirm all internal links resolve.
