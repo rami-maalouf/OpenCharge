@@ -15,6 +15,9 @@ final class FinderSettingsTests: XCTestCase {
             (copyPathToggle.value as? NSNumber)?.intValue,
             0
         )
+        let ready = NSPredicate(format: "isEnabled == true")
+        expectation(for: ready, evaluatedWith: copyPathToggle)
+        waitForExpectations(timeout: 5)
 
         let status = element(
             "settings.finder.extension.status",
@@ -35,6 +38,7 @@ final class FinderSettingsTests: XCTestCase {
                 .exists
         )
 
+        app.activate()
         copyPathToggle.click()
         let enabled = NSPredicate(format: "value == 1")
         expectation(for: enabled, evaluatedWith: copyPathToggle)

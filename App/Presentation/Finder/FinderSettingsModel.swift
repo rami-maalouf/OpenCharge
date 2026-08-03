@@ -87,6 +87,7 @@ final class FinderSettingsModel {
     private let capability: FinderExtensionCapability
     private let settingsStore: any SettingsStore
 
+    private var hasLoaded = false
     private(set) var extensionStatus: FinderExtensionStatus?
     private(set) var isCopyPathEnabled = false
     private(set) var isUpdating = false
@@ -101,7 +102,7 @@ final class FinderSettingsModel {
     }
 
     func load() async {
-        guard beginUpdate() else {
+        guard !hasLoaded, beginUpdate() else {
             return
         }
         defer { isUpdating = false }
@@ -113,6 +114,7 @@ final class FinderSettingsModel {
                 Self.copyPathFeatureID
             )
             settingsError = nil
+            hasLoaded = true
         } catch {
             settingsError = .systemFailure(
                 reasonKey: "feature.copyPath.settingsLoadFailed"
@@ -137,6 +139,7 @@ final class FinderSettingsModel {
             }
             isCopyPathEnabled = settings.isFeatureEnabled(featureID)
             settingsError = nil
+            hasLoaded = true
         } catch {
             settingsError = .systemFailure(
                 reasonKey: "feature.copyPath.settingsUpdateFailed"

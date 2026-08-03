@@ -70,6 +70,24 @@ final class FinderSettingsModelTests: XCTestCase {
         XCTAssertEqual(model.extensionStatus?.activation, .enabled)
     }
 
+    func testRepeatedLoadDoesNotRepeatInitialization() async {
+        let statusProbe = CountingFinderStatusProbe()
+        let store = InMemorySettingsStore()
+        let model = FinderSettingsModel(
+            settingsStore: store,
+            capability: FinderExtensionCapability(
+                currentStatus: { await statusProbe.status() },
+                openManagement: {}
+            )
+        )
+        await model.load()
+
+        await model.load()
+
+        let callCount = await statusProbe.callCount()
+        XCTAssertEqual(callCount, 1)
+    }
+
     private func capability(
         status: FinderExtensionStatus
     ) -> FinderExtensionCapability {
@@ -92,5 +110,21 @@ private actor FinderStatusProbe {
 
     func setEnabled(_ enabled: Bool) {
         isEnabled = enabled
+    }
+}
+
+private actor CountingFinderStatusProbe {
+    private var calls = 0
+
+    func status() -> FinderExtensionStatus {
+        calls += 1
+        return FinderExtensionStatus(
+            installation: .installed,
+            activation: .enabled
+        )
+    }
+
+    func callCount() -> Int {
+        calls
     }
 }
