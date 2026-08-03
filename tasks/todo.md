@@ -280,7 +280,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## P4: Permissions and Diagnostics
 
-- [ ] **P4-01: Implement permission aggregation**
+- [x] **P4-01: Implement permission aggregation**
   - Depends on: P3-07.
   - Acceptance: Aggregator independently queries providers, maps provider failures to unhealthy states, and derives feature availability without prompting.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter PermissionCenterTests`, then PACKAGE and FORMAT.
