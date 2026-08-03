@@ -301,7 +301,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeSystem/AccessibilityPermissionProvider.swift`, `Packages/OpenChargeKit/Tests/OpenChargeSystemTests/AccessibilityPermissionTests.swift`.
   - Commit: `feat: add accessibility permission adapter`
 
-- [ ] **P4-04: Add Finder extension activation status**
+- [x] **P4-04: Add Finder extension activation status**
   - Depends on: P4-01.
   - Acceptance: Adapter distinguishes installed, enabled, disabled, and unavailable states without claiming that registration guarantees menu visibility.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter FinderExtensionStatusTests`, then PACKAGE and BUILD.
