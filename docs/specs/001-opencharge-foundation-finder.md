@@ -1,9 +1,10 @@
 # Spec: OpenCharge Foundation + Finder
 
-Status: Draft for human review  
-Spec version: 1  
-Target platform: macOS 26 or later  
-Distribution: Direct download  
+- Status: Approved
+- Approved: August 3, 2026
+- Spec version: 1
+- Target platform: macOS 26 or later
+- Distribution: Direct download
 
 ## Objective
 
@@ -52,7 +53,7 @@ OpenCharge is built for both the maintainer's personal use and public use. The r
 - App group: `group.studio.orbitlabs.opencharge`
 - URL scheme: `opencharge://`
 - Settings document type: `studio.orbitlabs.opencharge.app-settings`
-- License: MIT, pending final human confirmation
+- License: MIT
 
 The name is a working identity. Existing use of OpenCharge in the electric-vehicle industry must be evaluated before public release.
 
@@ -506,18 +507,18 @@ Agents implementing this spec must:
 7. Mark a task complete only after its acceptance criteria pass.
 8. Stop and request approval for every Ask First boundary.
 
-## Open Questions
+## Approved Decisions
 
-The following proposed decisions require human confirmation before Phase 2 planning:
+The human approved the following decisions on August 3, 2026:
 
-1. Confirm `OpenCharge` as the working name while accepting that a naming review is required before public release.
-2. Confirm the MIT license.
-3. Confirm Universal 2 output for Apple Silicon and Intel Macs that support macOS 26.
-4. Confirm direct distribution only for v1.
-5. Confirm that Milestones 0 through 3 represent the intended Foundation + Finder scope.
-6. Confirm deferring Empty Trash and other destructive actions even though Empty Trash appeared in the original Foundation recommendation.
-7. Confirm that Finder keyboard behavior remains in scope after safe Finder actions, rather than being deferred with other fragile integrations.
-8. Confirm that Show Desktop and Sleep Displays receive short public-API feasibility tasks and are removed from v1 if no compliant approach is available.
+1. `OpenCharge` is the working name, with a naming review required before public release.
+2. The project uses the MIT license.
+3. Release builds are Universal 2 for Apple Silicon and Intel Macs that support macOS 26.
+4. V1 uses direct distribution only.
+5. Milestones 0 through 3 define the Foundation + Finder scope.
+6. Empty Trash and other destructive actions remain deferred.
+7. Finder keyboard behavior remains in scope after the safe Finder actions.
+8. Show Desktop and Sleep Displays receive bounded public-API feasibility tasks and are removed from v1 through a spec revision if no compliant approach exists.
 
 ## Research Reference
 
