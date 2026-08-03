@@ -382,7 +382,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/PasteboardWriting.swift`, `Packages/OpenChargeKit/Sources/OpenChargeSystem/PasteboardClient.swift`, `Packages/OpenChargeKit/Tests/OpenChargeSystemTests/PasteboardClientTests.swift`.
   - Commit: `feat: add privacy preserving pasteboard adapter`
 
-- [ ] **P6-04: Add Copy Path Finder menu item**
+- [x] **P6-04: Add Copy Path Finder menu item**
   - Depends on: P6-03.
   - Acceptance: Finder menu appears only when enabled and selection is valid, invokes shared action logic, and remains inert for empty selection.
   - Verify: BUILD and manually enable the extension and copy paths for files, folders, packages, spaces, and Unicode names.
