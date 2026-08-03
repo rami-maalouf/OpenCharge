@@ -361,7 +361,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## P6: Copy Path Finder and Services Slice
 
-- [ ] **P6-01: Normalize Finder and Services selections**
+- [x] **P6-01: Normalize Finder and Services selections**
   - Depends on: P4-05.
   - Acceptance: Normalizer produces deterministic valid file URLs, preserves selection order, handles packages and aliases deliberately, and reports missing items.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter FileSelectionTests`, then PACKAGE and FORMAT.
