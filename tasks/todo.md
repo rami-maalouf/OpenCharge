@@ -97,7 +97,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `.gitignore`, `LICENSE`, `README.md`, `CONTRIBUTING.md`, `PRIVACY.md`.
   - Commit: `docs: add project foundation documents`
 
-- [ ] **P0-02: Add formatting and verification entry points**
+- [x] **P0-02: Add formatting and verification entry points**
   - Depends on: P0-01.
   - Acceptance: SwiftFormat configuration enforces repository style and `scripts/check.sh` fails on format, package test, app build, or app test failure without hiding output.
   - Verify: `bash -n scripts/check.sh`, then DOCS.
