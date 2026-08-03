@@ -396,7 +396,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Services/ServicesProvider.swift`, `App/Services/CopyPathService.swift`, `App/Resources/Info.plist`, `OpenChargeTests/CopyPathServiceTests.swift`.
   - Commit: `feat: add copy path macos service`
 
-- [ ] **P6-06: Add Finder extension guidance**
+- [x] **P6-06: Add Finder extension guidance**
   - Depends on: P6-04, P6-05.
   - Acceptance: Finder Settings shows extension state, enablement, activation guidance, synced-folder limitations, and Services fallback.
   - Verify: UI and manually inspect enabled and disabled extension states.

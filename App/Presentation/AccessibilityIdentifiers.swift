@@ -15,6 +15,12 @@ enum AccessibilityID {
         static let appearance = "settings.general.appearance"
         static let launchAtLogin = "settings.general.launchAtLogin"
 
+        static let finderCopyPathToggle = "settings.finder.copyPath.toggle"
+        static let finderExtensionStatus = "settings.finder.extension.status"
+        static let finderManageExtensions = "settings.finder.extension.manage"
+        static let finderServicesFallback = "settings.finder.services.fallback"
+        static let finderServicesSetup = "settings.finder.services.setup"
+
         static let keepAwakeMode = "settings.foundation.keepAwake.mode"
         static let keepAwakeRetry = "settings.foundation.keepAwake.retry"
         static let keepAwakeStatus = "settings.foundation.keepAwake.status"

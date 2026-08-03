@@ -8,6 +8,7 @@ struct AppDependencies {
     let registry: FeatureRegistry
     let settingsStore: any SettingsStore
     let hasPersistentSettings: Bool
+    let finderExtensionCapability: FinderExtensionCapability
     let keepAwakeAction: KeepAwakeAction
     let launchAtLoginController: any LaunchAtLoginControlling
     let permissionCapabilities: [PermissionCapability]
@@ -16,6 +17,7 @@ struct AppDependencies {
         registry: FeatureRegistry,
         settingsStore: any SettingsStore,
         hasPersistentSettings: Bool,
+        finderExtensionCapability: FinderExtensionCapability = .preview,
         keepAwakeController: any KeepAwakeControlling = PreviewKeepAwakeController(),
         launchAtLoginController: any LaunchAtLoginControlling = PreviewLaunchAtLoginController(),
         permissionCapabilities: [PermissionCapability] = PermissionCapability.preview
@@ -23,6 +25,7 @@ struct AppDependencies {
         self.registry = registry
         self.settingsStore = settingsStore
         self.hasPersistentSettings = hasPersistentSettings
+        self.finderExtensionCapability = finderExtensionCapability
         keepAwakeAction = KeepAwakeAction(controller: keepAwakeController)
         self.launchAtLoginController = launchAtLoginController
         self.permissionCapabilities = permissionCapabilities
@@ -43,6 +46,7 @@ struct AppDependencies {
                 registry: registry,
                 settingsStore: InMemorySettingsStore(),
                 hasPersistentSettings: false,
+                finderExtensionCapability: .live(arguments: arguments),
                 keepAwakeController: keepAwakeController,
                 launchAtLoginController: LaunchAtLoginController(),
                 permissionCapabilities: PermissionCapability.live(arguments: arguments)
@@ -54,6 +58,7 @@ struct AppDependencies {
                 registry: registry,
                 settingsStore: settingsStore,
                 hasPersistentSettings: true,
+                finderExtensionCapability: .live(arguments: arguments),
                 keepAwakeController: keepAwakeController,
                 launchAtLoginController: LaunchAtLoginController(),
                 permissionCapabilities: PermissionCapability.live(
@@ -66,6 +71,7 @@ struct AppDependencies {
             registry: registry,
             settingsStore: InMemorySettingsStore(),
             hasPersistentSettings: false,
+            finderExtensionCapability: .live(arguments: arguments),
             keepAwakeController: keepAwakeController,
             permissionCapabilities: PermissionCapability.live(
                 arguments: arguments

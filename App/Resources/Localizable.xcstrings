@@ -285,6 +285,54 @@
     },
     "Version %@" : {
 
+    },
+    "Checking the Finder extension status." : {
+
+    },
+    "Copies absolute paths for selected files and folders." : {
+
+    },
+    "Copy Path" : {
+
+    },
+    "Disabled" : {
+
+    },
+    "Enable Copy Path" : {
+
+    },
+    "Enable the extension in System Settings to add OpenCharge actions to Finder." : {
+
+    },
+    "Enabled" : {
+
+    },
+    "Finder Extension" : {
+
+    },
+    "Finder Sync actions may not appear in iCloud Drive, Dropbox, OneDrive, or other synced folders. Use Services > Copy Path instead." : {
+
+    },
+    "Not Installed" : {
+
+    },
+    "OpenCharge could not check the Finder extension. You can review it in System Settings." : {
+
+    },
+    "OpenCharge could not read extension enablement. Review it in System Settings." : {
+
+    },
+    "OpenCharge could not update the Copy Path setting. Try again." : {
+
+    },
+    "Services Fallback" : {
+
+    },
+    "The extension is enabled. Finder still controls where its menu appears." : {
+
+    },
+    "The Finder extension is not installed in this build. Copy Path remains available through Services." : {
+
     }
   },
   "version" : "1.2"

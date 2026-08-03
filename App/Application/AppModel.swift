@@ -13,6 +13,7 @@ enum AppLoadState: Equatable {
 final class AppModel {
     let registry: FeatureRegistry
     let hasPersistentSettings: Bool
+    let finder: FinderSettingsModel
     let keepAwake: KeepAwakeModel
     let launchAtLogin: LaunchAtLoginModel
     let permissions: PermissionsModel
@@ -26,6 +27,10 @@ final class AppModel {
         registry = dependencies.registry
         settingsStore = dependencies.settingsStore
         hasPersistentSettings = dependencies.hasPersistentSettings
+        finder = FinderSettingsModel(
+            settingsStore: dependencies.settingsStore,
+            capability: dependencies.finderExtensionCapability
+        )
         keepAwake = KeepAwakeModel(
             action: dependencies.keepAwakeAction,
             settingsStore: dependencies.settingsStore
@@ -43,6 +48,7 @@ final class AppModel {
             loadState = .failed
         }
         await keepAwake.load()
+        await finder.load()
     }
 
     func setSetting(_ value: SettingsValue?, for key: SettingsKey) async {
@@ -62,5 +68,6 @@ final class AppModel {
 
     func didBecomeActive() async {
         await refreshPermissions()
+        await finder.refreshStatus()
     }
 }

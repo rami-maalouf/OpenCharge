@@ -31,7 +31,9 @@ struct SettingsView: View {
             PermissionsView(appModel: appModel)
         case .foundation:
             KeepAwakeSettingsView(model: appModel.keepAwake)
-        case .menu, .finder:
+        case .finder:
+            FinderSettingsView(model: appModel.finder)
+        case .menu:
             VStack(alignment: .leading, spacing: 12) {
                 Label(selection.title, systemImage: selection.systemImage)
                     .font(.title2.bold())
