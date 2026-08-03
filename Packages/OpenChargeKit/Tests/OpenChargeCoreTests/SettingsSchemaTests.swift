@@ -52,4 +52,13 @@ struct SettingsSchemaTests {
         #expect(decoded == settings)
         #expect(decoded[customKey] == .stringList(["en-CA", "fr-CA"]))
     }
+
+    @Test
+    func rejectsMalformedDecodedSettingsKey() {
+        let data = Data(#""General Invalid""#.utf8)
+
+        #expect(throws: DecodingError.self) {
+            try JSONDecoder().decode(SettingsKey.self, from: data)
+        }
+    }
 }

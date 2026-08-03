@@ -47,4 +47,13 @@ struct FeatureDescriptorTests {
 
         #expect([foundation, finder].sorted() == [finder, foundation])
     }
+
+    @Test
+    func rejectsMalformedDecodedIdentifier() {
+        let data = Data(#""Finder Invalid""#.utf8)
+
+        #expect(throws: DecodingError.self) {
+            try JSONDecoder().decode(FeatureID.self, from: data)
+        }
+    }
 }
