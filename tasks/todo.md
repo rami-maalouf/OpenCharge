@@ -148,7 +148,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## P1: Core Contracts and Test Harness
 
-- [ ] **P1-01: Define stable feature identity and metadata**
+- [x] **P1-01: Define stable feature identity and metadata**
   - Depends on: P0-08.
   - Acceptance: `FeatureID`, category, and descriptor are Sendable, Hashable where appropriate, Codable where persisted, and reject unknown empty identifiers.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter FeatureDescriptorTests`, then PACKAGE and FORMAT.
