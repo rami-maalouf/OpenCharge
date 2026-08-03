@@ -345,7 +345,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Presentation/Foundation/KeepAwakeSettingsView.swift`, `App/Presentation/Menu/MenuContentView.swift`, `App/Presentation/Settings/SettingsView.swift`, `OpenChargeUITests/KeepAwakeTests.swift`.
   - Commit: `feat: expose keep awake controls`
 
-- [ ] **P5-05: Add Keep Awake App Intents**
+- [x] **P5-05: Add Keep Awake App Intents**
   - Depends on: P5-04.
   - Acceptance: Get and Set intents call the same feature action, return meaningful dialog, and never construct a second power controller.
   - Verify: TEST, BUILD, and manually inspect the actions in Shortcuts.

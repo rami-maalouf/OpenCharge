@@ -14,6 +14,7 @@ struct OpenChargeApp: App {
 
     init(dependencies: AppDependencies) {
         UITestDisplayRouter.installIfRequested()
+        KeepAwakeIntentDependency.register(dependencies.keepAwakeAction)
         _model = State(initialValue: AppModel(dependencies: dependencies))
     }
 

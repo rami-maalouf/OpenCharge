@@ -61,6 +61,9 @@
     "Configure everyday OpenCharge actions." : {
 
     },
+    "Controls whether OpenCharge prevents system or display sleep." : {
+
+    },
     "Control how OpenCharge starts and appears." : {
 
     },
@@ -91,10 +94,16 @@
     "Granted" : {
 
     },
+    "Get Keep Awake Mode" : {
+
+    },
     "Launch OpenCharge at login" : {
 
     },
     "Keep Awake" : {
+
+    },
+    "Keep Awake is off." : {
 
     },
     "Keep Awake mode" : {
@@ -113,6 +122,9 @@
 
     },
     "MIT License" : {
+
+    },
+    "Mode" : {
 
     },
     "Manage Finder Extensions" : {
@@ -157,6 +169,21 @@
     "OpenCharge could not update Keep Awake." : {
 
     },
+    "OpenCharge could not update Keep Awake. It is still preventing system and display sleep." : {
+
+    },
+    "OpenCharge could not update Keep Awake. It is still preventing system sleep." : {
+
+    },
+    "OpenCharge could not update Keep Awake. It remains off." : {
+
+    },
+    "OpenCharge is preventing system and display sleep." : {
+
+    },
+    "OpenCharge is preventing system sleep." : {
+
+    },
     "Orbit Labs" : {
 
     },
@@ -184,7 +211,13 @@
     "Prevent system and display sleep" : {
 
     },
+    "Prevent System and Display Sleep" : {
+
+    },
     "Prevent system sleep" : {
+
+    },
+    "Prevent System Sleep" : {
 
     },
     "Preventing system and display sleep" : {
@@ -199,6 +232,9 @@
     "Request Access" : {
 
     },
+    "Reports the Keep Awake mode currently applied by OpenCharge." : {
+
+    },
     "Restricted" : {
 
     },
@@ -209,6 +245,9 @@
 
     },
     "Screen Recording" : {
+
+    },
+    "Set Keep Awake Mode" : {
 
     },
     "Settings..." : {
@@ -230,6 +269,9 @@
 
     },
     "System Sleep" : {
+
+    },
+    "The sleep behavior OpenCharge should prevent." : {
 
     },
     "This Mac restricts access. Other OpenCharge features remain available." : {
