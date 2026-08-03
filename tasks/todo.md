@@ -132,7 +132,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `OpenCharge.xcodeproj/project.pbxproj`, `OpenCharge.xcodeproj/xcshareddata/xcschemes/OpenCharge.xcscheme`, `OpenChargeTests/AppSmokeTests.swift`, `OpenChargeUITests/AppLaunchTests.swift`.
   - Commit: `test: add app and ui test targets`
 
-- [ ] **P0-07: Configure identifiers and entitlements**
+- [x] **P0-07: Configure identifiers and entitlements**
   - Depends on: P0-06.
   - Acceptance: App identifier, Finder identifier, app group, URL scheme, minimum OS, strict concurrency, and signing-neutral build settings match the approved spec; no developer team or credentials are committed.
   - Verify: BUILD, then inspect built Info.plists and entitlements with `codesign -d --entitlements :-` where signing is present.
