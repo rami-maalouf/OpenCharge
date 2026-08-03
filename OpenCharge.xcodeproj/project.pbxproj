@@ -24,6 +24,20 @@
 			remoteGlobalIDString = 0C0000000000000000000062;
 			remoteInfo = OpenChargeFinder;
 		};
+		0C0000000000000000000019 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C0000000000000000000071 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C0000000000000000000061;
+			remoteInfo = OpenCharge;
+		};
+		0C000000000000000000001A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C0000000000000000000071 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C0000000000000000000061;
+			remoteInfo = OpenCharge;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +57,8 @@
 /* Begin PBXFileReference section */
 		0C0000000000000000000021 /* OpenCharge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCharge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C0000000000000000000022 /* OpenChargeFinder.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenChargeFinder.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C0000000000000000000023 /* OpenChargeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenChargeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C0000000000000000000024 /* OpenChargeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenChargeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -79,6 +95,16 @@
 			path = FinderExtension;
 			sourceTree = "<group>";
 		};
+		0C0000000000000000000035 /* OpenChargeTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OpenChargeTests;
+			sourceTree = "<group>";
+		};
+		0C0000000000000000000036 /* OpenChargeUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OpenChargeUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +128,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0C0000000000000000000049 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C000000000000000000004C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -110,6 +150,8 @@
 			children = (
 				0C0000000000000000000032 /* App */,
 				0C0000000000000000000034 /* FinderExtension */,
+				0C0000000000000000000035 /* OpenChargeTests */,
+				0C0000000000000000000036 /* OpenChargeUITests */,
 				0C0000000000000000000052 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,6 +161,8 @@
 			children = (
 				0C0000000000000000000021 /* OpenCharge.app */,
 				0C0000000000000000000022 /* OpenChargeFinder.appex */,
+				0C0000000000000000000023 /* OpenChargeTests.xctest */,
+				0C0000000000000000000024 /* OpenChargeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,6 +222,52 @@
 			productReference = 0C0000000000000000000022 /* OpenChargeFinder.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		0C0000000000000000000064 /* OpenChargeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C0000000000000000000084 /* Build configuration list for PBXNativeTarget OpenChargeTests */;
+			buildPhases = (
+				0C0000000000000000000048 /* Sources */,
+				0C0000000000000000000049 /* Frameworks */,
+				0C000000000000000000004A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C0000000000000000000066 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0C0000000000000000000035 /* OpenChargeTests */,
+			);
+			name = OpenChargeTests;
+			packageProductDependencies = (
+			);
+			productName = OpenChargeTests;
+			productReference = 0C0000000000000000000023 /* OpenChargeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0C0000000000000000000065 /* OpenChargeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C0000000000000000000085 /* Build configuration list for PBXNativeTarget OpenChargeUITests */;
+			buildPhases = (
+				0C000000000000000000004B /* Sources */,
+				0C000000000000000000004C /* Frameworks */,
+				0C000000000000000000004D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C0000000000000000000067 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0C0000000000000000000036 /* OpenChargeUITests */,
+			);
+			name = OpenChargeUITests;
+			packageProductDependencies = (
+			);
+			productName = OpenChargeUITests;
+			productReference = 0C0000000000000000000024 /* OpenChargeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -194,6 +284,14 @@
 					};
 					0C0000000000000000000062 = {
 						CreatedOnToolsVersion = 26.6;
+					};
+					0C0000000000000000000064 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 0C0000000000000000000061;
+					};
+					0C0000000000000000000065 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 0C0000000000000000000061;
 					};
 				};
 			};
@@ -216,6 +314,8 @@
 			targets = (
 				0C0000000000000000000061 /* OpenCharge */,
 				0C0000000000000000000062 /* OpenChargeFinder */,
+				0C0000000000000000000064 /* OpenChargeTests */,
+				0C0000000000000000000065 /* OpenChargeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,6 +329,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0C0000000000000000000045 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C000000000000000000004A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C000000000000000000004D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,6 +366,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0C0000000000000000000048 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C000000000000000000004B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -259,6 +387,16 @@
 			isa = PBXTargetDependency;
 			target = 0C0000000000000000000062 /* OpenChargeFinder */;
 			targetProxy = 0C0000000000000000000018 /* PBXContainerItemProxy */;
+		};
+		0C0000000000000000000066 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C0000000000000000000061 /* OpenCharge */;
+			targetProxy = 0C0000000000000000000019 /* PBXContainerItemProxy */;
+		};
+		0C0000000000000000000067 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C0000000000000000000061 /* OpenCharge */;
+			targetProxy = 0C000000000000000000001A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -443,6 +581,52 @@
 			};
 			name = Release;
 		};
+		0C00000000000000000000B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.orbitlabs.opencharge.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenCharge.app/Contents/MacOS/OpenCharge";
+			};
+			name = Debug;
+		};
+		0C00000000000000000000B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.orbitlabs.opencharge.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenCharge.app/Contents/MacOS/OpenCharge";
+			};
+			name = Release;
+		};
+		0C00000000000000000000B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.orbitlabs.opencharge.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OpenCharge;
+			};
+			name = Debug;
+		};
+		0C00000000000000000000B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.orbitlabs.opencharge.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OpenCharge;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -469,6 +653,24 @@
 			buildConfigurations = (
 				0C00000000000000000000B3 /* Debug */,
 				0C00000000000000000000B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C0000000000000000000084 /* Build configuration list for PBXNativeTarget OpenChargeTests */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C00000000000000000000B5 /* Debug */,
+				0C00000000000000000000B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C0000000000000000000085 /* Build configuration list for PBXNativeTarget OpenChargeUITests */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C00000000000000000000B7 /* Debug */,
+				0C00000000000000000000B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

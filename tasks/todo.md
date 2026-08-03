@@ -125,11 +125,11 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `OpenCharge.xcodeproj/project.pbxproj`, `FinderExtension/FinderSyncController.swift`, `FinderExtension/Resources/Info.plist`.
   - Commit: `feat: scaffold finder sync extension`
 
-- [ ] **P0-06: Add application and UI test targets**
+- [x] **P0-06: Add application and UI test targets**
   - Depends on: P0-05.
   - Acceptance: Unit and UI targets are included in the shared scheme; smoke tests launch the app without changing user settings.
   - Verify: TEST.
-  - Files: `OpenCharge.xcodeproj/project.pbxproj`, `OpenChargeTests/AppSmokeTests.swift`, `OpenChargeUITests/AppLaunchTests.swift`.
+  - Files: `OpenCharge.xcodeproj/project.pbxproj`, `OpenCharge.xcodeproj/xcshareddata/xcschemes/OpenCharge.xcscheme`, `OpenChargeTests/AppSmokeTests.swift`, `OpenChargeUITests/AppLaunchTests.swift`.
   - Commit: `test: add app and ui test targets`
 
 - [ ] **P0-07: Configure identifiers and entitlements**
