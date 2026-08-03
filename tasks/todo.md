@@ -199,7 +199,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/SettingsSchema.swift`, `Packages/OpenChargeKit/Sources/OpenChargeCore/SettingsKey.swift`, `Packages/OpenChargeKit/Tests/OpenChargeCoreTests/SettingsSchemaTests.swift`.
   - Commit: `feat: define versioned settings schema`
 
-- [ ] **P2-02: Add settings codec and migrations**
+- [x] **P2-02: Add settings codec and migrations**
   - Depends on: P2-01.
   - Acceptance: Missing and version 1 data decode safely; corrupt and future-version data fail without destructive writes; migrations are idempotent.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter SettingsMigrationTests`, then PACKAGE and FORMAT.
