@@ -176,7 +176,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/ActionRequest.swift`, `Packages/OpenChargeKit/Sources/OpenChargeCore/ActionResult.swift`, `Packages/OpenChargeKit/Sources/OpenChargeCore/ActionError.swift`, `Packages/OpenChargeKit/Tests/OpenChargeCoreTests/ActionContractTests.swift`.
   - Commit: `feat: define action execution contracts`
 
-- [ ] **P1-05: Implement failure-isolated feature registry**
+- [x] **P1-05: Implement failure-isolated feature registry**
   - Depends on: P1-04.
   - Acceptance: Registry provides deterministic ordering and preserves healthy features when one factory fails; duplicate identifiers are rejected visibly.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter FeatureRegistryTests`, then PACKAGE and FORMAT.
