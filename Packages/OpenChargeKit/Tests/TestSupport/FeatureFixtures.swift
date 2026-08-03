@@ -10,6 +10,7 @@ public enum FeatureFixtures {
         category: FeatureCategory = .foundation,
         titleKey: String = "feature.fixture.title",
         descriptionKey: String = "feature.fixture.description",
+        requiredPermissions: Set<PermissionKind> = [],
         supportsGlobalShortcut: Bool = false,
         supportsAppIntent: Bool = false
     ) -> FeatureDescriptor {
@@ -18,6 +19,7 @@ public enum FeatureFixtures {
             category: category,
             titleKey: titleKey,
             descriptionKey: descriptionKey,
+            requiredPermissions: requiredPermissions,
             supportsGlobalShortcut: supportsGlobalShortcut,
             supportsAppIntent: supportsAppIntent
         )

@@ -28,6 +28,7 @@ struct FeatureDescriptorTests {
             category: .finder,
             titleKey: "feature.copyPath.title",
             descriptionKey: "feature.copyPath.description",
+            requiredPermissions: [.automation, .finderSync],
             supportsGlobalShortcut: true,
             supportsAppIntent: false
         )
@@ -36,6 +37,7 @@ struct FeatureDescriptorTests {
         let decoded = try JSONDecoder().decode(FeatureDescriptor.self, from: encoded)
 
         #expect(decoded == descriptor)
+        #expect(decoded.requiredPermissions == [.automation, .finderSync])
     }
 
     @Test
