@@ -257,7 +257,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Presentation/Features/FeatureRowModel.swift`, `App/Presentation/Features/FeatureSettingsRow.swift`, `OpenChargeTests/FeatureRowModelTests.swift`.
   - Commit: `feat: add reusable feature settings rows`
 
-- [ ] **P3-05: Add Launch at Login adapter and model**
+- [x] **P3-05: Add Launch at Login adapter and model**
   - Depends on: P3-04.
   - Acceptance: ServiceManagement adapter reports current state and typed failures; model never claims success when registration fails.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter LaunchAtLoginTests`, then TEST and BUILD.
