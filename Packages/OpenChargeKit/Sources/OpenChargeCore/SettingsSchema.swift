@@ -12,6 +12,7 @@ public struct SettingsSchema: Equatable, Codable, Sendable {
         enabledFeatureIDs: [],
         configuration: [
             .appearance: .string("system"),
+            .keepAwakeConfiguration: .string(KeepAwakeConfiguration.disabled.rawValue),
             .launchAtLogin: .boolean(false),
             .showsMenuBarIcon: .boolean(true)
         ]

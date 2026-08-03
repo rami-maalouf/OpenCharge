@@ -15,6 +15,10 @@ struct SettingsSchemaTests {
         #expect(settings[.launchAtLogin] == .boolean(false))
         #expect(settings[.showsMenuBarIcon] == .boolean(true))
         #expect(settings[.appearance] == .string("system"))
+        #expect(
+            settings[.keepAwakeConfiguration]
+                == .string(KeepAwakeConfiguration.disabled.rawValue)
+        )
     }
 
     @Test

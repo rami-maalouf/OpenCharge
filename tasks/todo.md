@@ -331,7 +331,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeSystem/PowerAssertionController.swift`, `Packages/OpenChargeKit/Tests/OpenChargeSystemTests/PowerAssertionControllerTests.swift`.
   - Commit: `feat: implement keep awake power assertions`
 
-- [ ] **P5-03: Add Keep Awake presentation model**
+- [x] **P5-03: Add Keep Awake presentation model**
   - Depends on: P5-02.
   - Acceptance: Main-actor model refreshes, toggles, shows progress and errors, and persists configuration through the settings store.
   - Verify: `xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -destination 'platform=macOS' -only-testing:OpenChargeTests/KeepAwakeModelTests test`, then TEST.

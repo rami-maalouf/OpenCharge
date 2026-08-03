@@ -34,6 +34,9 @@ public struct SettingsKey: RawRepresentable, Hashable, Codable, Sendable, Compar
     }
 
     public static let appearance = Self(uncheckedRawValue: "general.appearance")
+    public static let keepAwakeConfiguration = Self(
+        uncheckedRawValue: "foundation.keep-awake.configuration"
+    )
     public static let launchAtLogin = Self(uncheckedRawValue: "general.launch-at-login")
     public static let showsMenuBarIcon = Self(uncheckedRawValue: "general.shows-menu-bar-icon")
 
