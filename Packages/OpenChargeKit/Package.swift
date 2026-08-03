@@ -22,9 +22,14 @@ let package = Package(
             name: "OpenChargeFeatures",
             dependencies: ["OpenChargeCore"]
         ),
+        .target(
+            name: "TestSupport",
+            dependencies: ["OpenChargeCore"],
+            path: "Tests/TestSupport"
+        ),
         .testTarget(
             name: "OpenChargeCoreTests",
-            dependencies: ["OpenChargeCore"]
+            dependencies: ["OpenChargeCore", "TestSupport"]
         )
     ],
     swiftLanguageModes: [.v6]

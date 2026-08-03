@@ -183,7 +183,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/FeatureRegistry.swift`, `Packages/OpenChargeKit/Tests/OpenChargeCoreTests/FeatureRegistryTests.swift`.
   - Commit: `feat: add failure isolated feature registry`
 
-- [ ] **P1-06: Add reusable deterministic test support**
+- [x] **P1-06: Add reusable deterministic test support**
   - Depends on: P1-05.
   - Acceptance: Test support provides controlled clocks, UUIDs, cancellation, and feature factories without global mutable state or unchecked Sendable conformance.
   - Verify: PACKAGE and FORMAT.
