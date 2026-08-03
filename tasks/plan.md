@@ -1,6 +1,7 @@
 # OpenCharge Foundation + Finder Implementation Plan
 
-- Status: Draft for human review
+- Status: Approved
+- Approved: August 3, 2026
 - Plan version: 1
 - Created: August 3, 2026
 - Source specification: `docs/specs/001-opencharge-foundation-finder.md`
@@ -551,9 +552,9 @@ Checkpoint evidence is recorded in the implementation task or milestone document
 | Universal 2 cannot be runtime-tested on available Intel hardware | Architecture-specific regression | Compile and inspect both slices on every release, use CI or borrowed hardware when approved, and document the untested runtime boundary. |
 | Product name conflicts with existing OpenCharge uses | Public-release delay | Keep identity assets replaceable and complete a naming review before release hardening. |
 
-## Plan Completion Criteria
+## Approved Plan Decisions
 
-This plan is ready for Phase 3 task breakdown when the human confirms:
+The human approved the plan on August 3, 2026, confirming:
 
 1. The phase order matches the intended Foundation + Finder priorities.
 2. Milestone 0 remains the first buildable bare-bones application.
@@ -563,4 +564,4 @@ This plan is ready for Phase 3 task breakdown when the human confirms:
 6. The parallel work boundaries and sequential ownership rules are appropriate for AI agents.
 7. The risk mitigations meet the expected safety and quality bar.
 
-After approval, Phase 3 will convert this plan into `tasks/todo.md`. Each task will be sized for one focused agent session, list no more than about five files, state acceptance criteria, include exact verification commands, and name its dependencies.
+Phase 3 converts this plan into `tasks/todo.md`. Each task is sized for one focused agent session, lists no more than about five files, states acceptance criteria, includes exact verification commands, and names its dependencies.
