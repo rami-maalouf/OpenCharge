@@ -10,10 +10,39 @@
 		0C0000000000000000000011 /* OpenChargeCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0000000000000000000091 /* OpenChargeCore */; };
 		0C0000000000000000000012 /* OpenChargeSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0000000000000000000092 /* OpenChargeSystem */; };
 		0C0000000000000000000013 /* OpenChargeFeatures in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0000000000000000000093 /* OpenChargeFeatures */; };
+		0C0000000000000000000014 /* OpenChargeFinder.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0C0000000000000000000022 /* OpenChargeFinder.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0C0000000000000000000015 /* OpenChargeCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0000000000000000000091 /* OpenChargeCore */; };
+		0C0000000000000000000016 /* OpenChargeSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0000000000000000000092 /* OpenChargeSystem */; };
+		0C0000000000000000000017 /* OpenChargeFeatures in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0000000000000000000093 /* OpenChargeFeatures */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0C0000000000000000000018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C0000000000000000000071 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C0000000000000000000062;
+			remoteInfo = OpenChargeFinder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0C0000000000000000000047 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0C0000000000000000000014 /* OpenChargeFinder.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0C0000000000000000000021 /* OpenCharge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCharge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C0000000000000000000022 /* OpenChargeFinder.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenChargeFinder.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -24,6 +53,13 @@
 			);
 			target = 0C0000000000000000000061 /* OpenCharge */;
 		};
+		0C0000000000000000000033 /* Exceptions for FinderExtension folder in OpenChargeFinder target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/Info.plist,
+			);
+			target = 0C0000000000000000000062 /* OpenChargeFinder */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +69,14 @@
 				0C0000000000000000000031 /* Exceptions for App folder in OpenCharge target */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		0C0000000000000000000034 /* FinderExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0C0000000000000000000033 /* Exceptions for FinderExtension folder in OpenChargeFinder target */,
+			);
+			path = FinderExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -48,6 +92,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0C0000000000000000000044 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C0000000000000000000015 /* OpenChargeCore in Frameworks */,
+				0C0000000000000000000016 /* OpenChargeSystem in Frameworks */,
+				0C0000000000000000000017 /* OpenChargeFeatures in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				0C0000000000000000000032 /* App */,
+				0C0000000000000000000034 /* FinderExtension */,
 				0C0000000000000000000052 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				0C0000000000000000000021 /* OpenCharge.app */,
+				0C0000000000000000000022 /* OpenChargeFinder.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,10 +133,12 @@
 				0C0000000000000000000043 /* Sources */,
 				0C0000000000000000000041 /* Frameworks */,
 				0C0000000000000000000042 /* Resources */,
+				0C0000000000000000000047 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0C0000000000000000000063 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				0C0000000000000000000032 /* App */,
@@ -95,6 +153,31 @@
 			productReference = 0C0000000000000000000021 /* OpenCharge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0C0000000000000000000062 /* OpenChargeFinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C0000000000000000000083 /* Build configuration list for PBXNativeTarget OpenChargeFinder */;
+			buildPhases = (
+				0C0000000000000000000046 /* Sources */,
+				0C0000000000000000000044 /* Frameworks */,
+				0C0000000000000000000045 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0C0000000000000000000034 /* FinderExtension */,
+			);
+			name = OpenChargeFinder;
+			packageProductDependencies = (
+				0C0000000000000000000091 /* OpenChargeCore */,
+				0C0000000000000000000092 /* OpenChargeSystem */,
+				0C0000000000000000000093 /* OpenChargeFeatures */,
+			);
+			productName = OpenChargeFinder;
+			productReference = 0C0000000000000000000022 /* OpenChargeFinder.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +190,9 @@
 				ORGANIZATIONNAME = "Orbit Labs";
 				TargetAttributes = {
 					0C0000000000000000000061 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					0C0000000000000000000062 = {
 						CreatedOnToolsVersion = 26.6;
 					};
 				};
@@ -129,12 +215,20 @@
 			projectRoot = "";
 			targets = (
 				0C0000000000000000000061 /* OpenCharge */,
+				0C0000000000000000000062 /* OpenChargeFinder */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0C0000000000000000000042 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C0000000000000000000045 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -151,7 +245,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0C0000000000000000000046 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0C0000000000000000000063 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C0000000000000000000062 /* OpenChargeFinder */;
+			targetProxy = 0C0000000000000000000018 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0C00000000000000000000A1 /* Debug */ = {
@@ -284,6 +393,56 @@
 			};
 			name = Release;
 		};
+		0C00000000000000000000B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FinderExtension/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.orbitlabs.opencharge.finder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		0C00000000000000000000B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ARCHS = (
+					arm64,
+					x86_64,
+				);
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FinderExtension/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.orbitlabs.opencharge.finder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -301,6 +460,15 @@
 			buildConfigurations = (
 				0C00000000000000000000B1 /* Debug */,
 				0C00000000000000000000B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C0000000000000000000083 /* Build configuration list for PBXNativeTarget OpenChargeFinder */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C00000000000000000000B3 /* Debug */,
+				0C00000000000000000000B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

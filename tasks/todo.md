@@ -118,7 +118,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `OpenCharge.xcodeproj/project.pbxproj`, `OpenCharge.xcodeproj/xcshareddata/xcschemes/OpenCharge.xcscheme`, `App/OpenChargeApp.swift`, `App/Resources/Info.plist`.
   - Commit: `feat: scaffold opencharge menu bar app`
 
-- [ ] **P0-05: Add the Finder Sync extension target**
+- [x] **P0-05: Add the Finder Sync extension target**
   - Depends on: P0-04.
   - Acceptance: Embedded Finder extension has identifier `studio.orbitlabs.opencharge.finder`, an inert controller, correct extension point metadata, and builds with the app.
   - Verify: BUILD and `pluginkit -m -p com.apple.FinderSync -i studio.orbitlabs.opencharge.finder` after launching the built app.
