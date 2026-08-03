@@ -213,7 +213,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/SettingsStore.swift`, `Packages/OpenChargeKit/Sources/OpenChargeSystem/InMemorySettingsStore.swift`, `Packages/OpenChargeKit/Tests/OpenChargeSystemTests/SettingsStoreTests.swift`, `Packages/OpenChargeKit/Package.swift`.
   - Commit: `feat: add settings store abstractions`
 
-- [ ] **P2-04: Implement app-group preferences store**
+- [x] **P2-04: Implement app-group preferences store**
   - Depends on: P2-03.
   - Acceptance: Adapter reads and writes schema through `group.studio.orbitlabs.opencharge`, commits complete encoded snapshots, and preserves last valid data after an encoding failure.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter AppGroupSettingsStoreTests`, then PACKAGE and BUILD.
