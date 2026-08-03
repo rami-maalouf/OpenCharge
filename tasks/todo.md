@@ -324,7 +324,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/KeepAwakeControlling.swift`, `Packages/OpenChargeKit/Sources/OpenChargeFeatures/KeepAwakeAction.swift`, `Packages/OpenChargeKit/Tests/OpenChargeFeaturesTests/KeepAwakeActionTests.swift`.
   - Commit: `feat: define keep awake behavior`
 
-- [ ] **P5-02: Implement IOKit power assertion ownership**
+- [x] **P5-02: Implement IOKit power assertion ownership**
   - Depends on: P5-01.
   - Acceptance: Actor creates only required assertions, releases every valid handle exactly once, survives partial creation failure, and deinitialization cannot leak.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter PowerAssertionControllerTests`, then PACKAGE and BUILD.
