@@ -287,7 +287,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/PermissionProviding.swift`, `Packages/OpenChargeKit/Sources/OpenChargeFeatures/PermissionCenter.swift`, `Packages/OpenChargeKit/Tests/OpenChargeFeaturesTests/PermissionCenterTests.swift`, `Packages/OpenChargeKit/Package.swift`.
   - Commit: `feat: add permission aggregation`
 
-- [ ] **P4-02: Add Screen Recording permission adapter**
+- [x] **P4-02: Add Screen Recording permission adapter**
   - Depends on: P4-01.
   - Acceptance: Adapter checks status without prompting, requests only through an explicit method, and provides the correct System Settings recovery route.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter ScreenRecordingPermissionTests`, then PACKAGE and BUILD.
