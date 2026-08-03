@@ -192,7 +192,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## P2: Versioned Settings
 
-- [ ] **P2-01: Define settings schema and stable keys**
+- [x] **P2-01: Define settings schema and stable keys**
   - Depends on: P1-06.
   - Acceptance: Schema version 1 stores feature enablement and shared configuration with all capabilities disabled by default and no UI types.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter SettingsSchemaTests`, then PACKAGE and FORMAT.
