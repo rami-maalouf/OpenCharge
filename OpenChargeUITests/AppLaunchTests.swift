@@ -3,7 +3,7 @@ import XCTest
 final class AppLaunchTests: XCTestCase {
     @MainActor
     func testLaunches() {
-        let app = XCUIApplication()
+        let app = XCUIApplication.openCharge()
 
         app.launch()
 

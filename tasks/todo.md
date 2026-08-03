@@ -338,7 +338,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Presentation/Foundation/KeepAwakeModel.swift`, `OpenChargeTests/KeepAwakeModelTests.swift`.
   - Commit: `feat: add keep awake presentation model`
 
-- [ ] **P5-04: Integrate Keep Awake into menu and Settings**
+- [x] **P5-04: Integrate Keep Awake into menu and Settings**
   - Depends on: P5-03.
   - Acceptance: Menu and Foundation Settings show the same state, optional display behavior, availability, and recoverable errors.
   - Verify: UI and manually toggle both modes while observing visible state.

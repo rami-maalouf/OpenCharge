@@ -3,8 +3,10 @@ import XCTest
 final class PermissionsTests: XCTestCase {
     @MainActor
     func testRendersDeterministicPermissionDiagnosticsWithoutPrompting() {
-        let app = XCUIApplication()
+        let app = XCUIApplication.openCharge()
         app.launchArguments += [
+            "--ui-in-memory-settings",
+            "--ui-preview-keep-awake",
             "--ui-permission-screenRecording", "denied",
             "--ui-permission-accessibility", "granted",
             "--ui-permission-automation", "restricted",
@@ -59,8 +61,10 @@ final class PermissionsTests: XCTestCase {
 
     @MainActor
     func testRendersNotDeterminedStateAndExplanationBeforeRequest() {
-        let app = XCUIApplication()
+        let app = XCUIApplication.openCharge()
         app.launchArguments += [
+            "--ui-in-memory-settings",
+            "--ui-preview-keep-awake",
             "--ui-permission-screenRecording", "notDetermined",
             "--ui-permission-accessibility", "granted",
             "--ui-permission-automation", "granted",

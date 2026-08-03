@@ -3,7 +3,7 @@ import XCTest
 final class AccessibilitySmokeTests: XCTestCase {
     @MainActor
     func testShellExposesStableIdentifiersAndVoiceOverNames() {
-        let app = XCUIApplication()
+        let app = XCUIApplication.openCharge()
         app.launch()
 
         let statusItem = app.menuBars.statusItems["menuBar.openCharge"]

@@ -16,6 +16,20 @@ struct MenuContentView: View {
     }
 
     var body: some View {
+        Section("Foundation") {
+            Button {
+                Task { @MainActor in
+                    await appModel.keepAwake.toggle()
+                }
+            } label: {
+                Label(keepAwakeMenuTitle, systemImage: keepAwakeSystemImage)
+            }
+            .accessibilityLabel("Keep Awake")
+            .accessibilityValue(keepAwakeModeTitle)
+            .accessibilityIdentifier(AccessibilityID.Menu.keepAwake)
+            .disabled(appModel.keepAwake.isUpdating)
+        }
+
         ForEach(model.featureSections) { section in
             Section(section.category.menuTitle) {
                 ForEach(section.features) { feature in
@@ -57,8 +71,29 @@ struct MenuContentView: View {
         .keyboardShortcut("q")
         .accessibilityIdentifier(AccessibilityID.Menu.quit)
         .task {
-            await appModel.load()
+            if appModel.loadState == .idle {
+                await appModel.load()
+            }
         }
+    }
+
+    private var keepAwakeModeTitle: String {
+        switch appModel.keepAwake.configuration {
+        case .disabled:
+            String(localized: "Off")
+        case .idleSystem:
+            String(localized: "System Sleep")
+        case .idleSystemAndDisplay:
+            String(localized: "System and Display Sleep")
+        }
+    }
+
+    private var keepAwakeMenuTitle: String {
+        String(localized: "Keep Awake: \(keepAwakeModeTitle)")
+    }
+
+    private var keepAwakeSystemImage: String {
+        appModel.keepAwake.isEnabled ? "moon.fill" : "moon"
     }
 
     private var healthTitle: String {

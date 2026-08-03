@@ -40,10 +40,16 @@
     "Automation" : {
 
     },
+    "Available without additional permissions." : {
+
+    },
     "Checking" : {
 
     },
     "Checking current status without requesting access." : {
+
+    },
+    "Choose whether OpenCharge prevents idle system sleep, or both idle system and display sleep." : {
 
     },
     "Choose which actions appear in the menu bar." : {
@@ -56,6 +62,9 @@
 
     },
     "Control how OpenCharge starts and appears." : {
+
+    },
+    "Current Status" : {
 
     },
     "Dark" : {
@@ -85,6 +94,18 @@
     "Launch OpenCharge at login" : {
 
     },
+    "Keep Awake" : {
+
+    },
+    "Keep Awake mode" : {
+
+    },
+    "Keep Awake status" : {
+
+    },
+    "Keep Awake: %@" : {
+
+    },
     "Learn about OpenCharge, privacy, and this open-source project." : {
 
     },
@@ -106,7 +127,13 @@
     "Not Currently Required" : {
 
     },
+    "Not selected" : {
+
+    },
     "Not Requested" : {
+
+    },
+    "Off" : {
 
     },
     "Open Accessibility Settings" : {
@@ -125,6 +152,9 @@
 
     },
     "OpenCharge could not update Launch at Login." : {
+
+    },
+    "OpenCharge could not update Keep Awake." : {
 
     },
     "Orbit Labs" : {
@@ -151,6 +181,18 @@
     "Privacy" : {
 
     },
+    "Prevent system and display sleep" : {
+
+    },
+    "Prevent system sleep" : {
+
+    },
+    "Preventing system and display sleep" : {
+
+    },
+    "Preventing system sleep" : {
+
+    },
     "Quit OpenCharge" : {
 
     },
@@ -172,6 +214,9 @@
     "Settings..." : {
 
     },
+    "Selected" : {
+
+    },
     "Startup" : {
 
     },
@@ -179,6 +224,12 @@
 
     },
     "System" : {
+
+    },
+    "System and Display Sleep" : {
+
+    },
+    "System Sleep" : {
 
     },
     "This Mac restricts access. Other OpenCharge features remain available." : {

@@ -13,6 +13,7 @@ struct OpenChargeApp: App {
     }
 
     init(dependencies: AppDependencies) {
+        UITestDisplayRouter.installIfRequested()
         _model = State(initialValue: AppModel(dependencies: dependencies))
     }
 

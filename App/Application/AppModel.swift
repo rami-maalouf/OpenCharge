@@ -13,6 +13,7 @@ enum AppLoadState: Equatable {
 final class AppModel {
     let registry: FeatureRegistry
     let hasPersistentSettings: Bool
+    let keepAwake: KeepAwakeModel
     let launchAtLogin: LaunchAtLoginModel
     let permissions: PermissionsModel
 
@@ -25,6 +26,10 @@ final class AppModel {
         registry = dependencies.registry
         settingsStore = dependencies.settingsStore
         hasPersistentSettings = dependencies.hasPersistentSettings
+        keepAwake = KeepAwakeModel(
+            action: dependencies.keepAwakeAction,
+            settingsStore: dependencies.settingsStore
+        )
         launchAtLogin = LaunchAtLoginModel(controller: dependencies.launchAtLoginController)
         permissions = PermissionsModel(capabilities: dependencies.permissionCapabilities)
     }
@@ -37,6 +42,7 @@ final class AppModel {
         } catch {
             loadState = .failed
         }
+        await keepAwake.load()
     }
 
     func setSetting(_ value: SettingsValue?, for key: SettingsKey) async {

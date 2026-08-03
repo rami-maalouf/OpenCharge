@@ -6,6 +6,7 @@ enum AccessibilityID {
     enum Menu {
         static let about = "menu.about"
         static let health = "menu.health"
+        static let keepAwake = "menu.keepAwake"
         static let quit = "menu.quit"
         static let settings = "menu.settings"
     }
@@ -13,6 +14,16 @@ enum AccessibilityID {
     enum Settings {
         static let appearance = "settings.general.appearance"
         static let launchAtLogin = "settings.general.launchAtLogin"
+
+        static let keepAwakeMode = "settings.foundation.keepAwake.mode"
+        static let keepAwakeRetry = "settings.foundation.keepAwake.retry"
+        static let keepAwakeStatus = "settings.foundation.keepAwake.status"
+
+        static func keepAwakeMode(
+            _ configuration: KeepAwakeConfiguration
+        ) -> String {
+            "settings.foundation.keepAwake.mode.\(configuration.rawValue)"
+        }
 
         static let aboutLicense = "settings.about.license"
         static let aboutPrivacy = "settings.about.privacy"

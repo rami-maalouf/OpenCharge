@@ -1,5 +1,6 @@
 import Foundation
 import OpenChargeCore
+import OpenChargeFeatures
 import OpenChargeSystem
 
 @MainActor
@@ -7,6 +8,7 @@ struct AppDependencies {
     let registry: FeatureRegistry
     let settingsStore: any SettingsStore
     let hasPersistentSettings: Bool
+    let keepAwakeAction: KeepAwakeAction
     let launchAtLoginController: any LaunchAtLoginControlling
     let permissionCapabilities: [PermissionCapability]
 
@@ -14,26 +16,48 @@ struct AppDependencies {
         registry: FeatureRegistry,
         settingsStore: any SettingsStore,
         hasPersistentSettings: Bool,
+        keepAwakeController: any KeepAwakeControlling = PreviewKeepAwakeController(),
         launchAtLoginController: any LaunchAtLoginControlling = PreviewLaunchAtLoginController(),
         permissionCapabilities: [PermissionCapability] = PermissionCapability.preview
     ) {
         self.registry = registry
         self.settingsStore = settingsStore
         self.hasPersistentSettings = hasPersistentSettings
+        keepAwakeAction = KeepAwakeAction(controller: keepAwakeController)
         self.launchAtLoginController = launchAtLoginController
         self.permissionCapabilities = permissionCapabilities
     }
 
     static var live: Self {
         let registry = FeatureRegistry(factories: [])
+        let arguments = ProcessInfo.processInfo.arguments
+        let keepAwakeController: any KeepAwakeControlling = if arguments.contains(
+            "--ui-preview-keep-awake"
+        ) {
+            PreviewKeepAwakeController()
+        } else {
+            PowerAssertionController()
+        }
+        if arguments.contains("--ui-in-memory-settings") {
+            return Self(
+                registry: registry,
+                settingsStore: InMemorySettingsStore(),
+                hasPersistentSettings: false,
+                keepAwakeController: keepAwakeController,
+                launchAtLoginController: LaunchAtLoginController(),
+                permissionCapabilities: PermissionCapability.live(arguments: arguments)
+            )
+        }
+
         if let settingsStore = AppGroupSettingsStore() {
             return Self(
                 registry: registry,
                 settingsStore: settingsStore,
                 hasPersistentSettings: true,
+                keepAwakeController: keepAwakeController,
                 launchAtLoginController: LaunchAtLoginController(),
                 permissionCapabilities: PermissionCapability.live(
-                    arguments: ProcessInfo.processInfo.arguments
+                    arguments: arguments
                 )
             )
         }
@@ -42,8 +66,9 @@ struct AppDependencies {
             registry: registry,
             settingsStore: InMemorySettingsStore(),
             hasPersistentSettings: false,
+            keepAwakeController: keepAwakeController,
             permissionCapabilities: PermissionCapability.live(
-                arguments: ProcessInfo.processInfo.arguments
+                arguments: arguments
             )
         )
     }
@@ -54,6 +79,21 @@ struct AppDependencies {
             settingsStore: InMemorySettingsStore(),
             hasPersistentSettings: false
         )
+    }
+}
+
+private actor PreviewKeepAwakeController: KeepAwakeControlling {
+    private var configuration = KeepAwakeConfiguration.disabled
+
+    func currentConfiguration() -> KeepAwakeConfiguration {
+        configuration
+    }
+
+    func apply(
+        _ configuration: KeepAwakeConfiguration
+    ) -> KeepAwakeConfiguration {
+        self.configuration = configuration
+        return configuration
     }
 }
 

@@ -8,6 +8,7 @@ final class KeepAwakeModel {
     private let action: KeepAwakeAction
     private let settingsStore: any SettingsStore
     private var lastEnabledConfiguration = KeepAwakeConfiguration.idleSystem
+    private var lastRequestedConfiguration: KeepAwakeConfiguration?
 
     private(set) var error: ActionError?
     private(set) var isUpdating = false
@@ -72,6 +73,7 @@ final class KeepAwakeModel {
             return
         }
         defer { isUpdating = false }
+        lastRequestedConfiguration = configuration
 
         let previousState = state
         switch await action.set(configuration) {
@@ -100,6 +102,14 @@ final class KeepAwakeModel {
                 reasonKey: "feature.keepAwake.partialUpdate"
             )
             state = await action.currentState()
+        }
+    }
+
+    func retry() async {
+        if let lastRequestedConfiguration {
+            await setConfiguration(lastRequestedConfiguration)
+        } else {
+            await load()
         }
     }
 

@@ -3,7 +3,8 @@ import XCTest
 final class GeneralAndAboutTests: XCTestCase {
     @MainActor
     func testGeneralAndAboutExposeExpectedControlsAndLinks() {
-        let app = XCUIApplication()
+        let app = XCUIApplication.openCharge()
+        app.launchArguments += ["--ui-in-memory-settings", "--ui-preview-keep-awake"]
         app.launch()
         openSettings(in: app)
 
