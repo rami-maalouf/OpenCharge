@@ -220,7 +220,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeSystem/AppGroupSettingsStore.swift`, `Packages/OpenChargeKit/Tests/OpenChargeSystemTests/AppGroupSettingsStoreTests.swift`.
   - Commit: `feat: persist settings in shared app group`
 
-- [ ] **P2-05: Add extension-safe settings snapshot**
+- [x] **P2-05: Add extension-safe settings snapshot**
   - Depends on: P2-04.
   - Acceptance: Finder snapshot exposes only extension-relevant enablement and configuration, round-trips version 1 fixtures, and rejects incompatible data.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter FinderSettingsSnapshotTests`, then PACKAGE and FORMAT.
