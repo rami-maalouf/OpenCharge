@@ -30,6 +30,10 @@ let package = Package(
         .testTarget(
             name: "OpenChargeCoreTests",
             dependencies: ["OpenChargeCore", "TestSupport"]
+        ),
+        .testTarget(
+            name: "OpenChargeSystemTests",
+            dependencies: ["OpenChargeCore", "OpenChargeSystem", "TestSupport"]
         )
     ],
     swiftLanguageModes: [.v6]

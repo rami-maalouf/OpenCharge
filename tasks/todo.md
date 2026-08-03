@@ -206,7 +206,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/SettingsCodec.swift`, `Packages/OpenChargeKit/Sources/OpenChargeCore/SettingsMigrator.swift`, `Packages/OpenChargeKit/Tests/OpenChargeCoreTests/SettingsMigrationTests.swift`.
   - Commit: `feat: add settings codec and migrations`
 
-- [ ] **P2-03: Implement settings store contracts and in-memory store**
+- [x] **P2-03: Implement settings store contracts and in-memory store**
   - Depends on: P2-02.
   - Acceptance: Async settings store supports snapshots and atomic update closures; in-memory implementation is deterministic and safe under concurrent tests.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter SettingsStoreTests`, then PACKAGE and FORMAT.
