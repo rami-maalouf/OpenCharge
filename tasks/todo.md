@@ -250,7 +250,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `App/Presentation/Settings/SettingsSection.swift`, `App/Presentation/Settings/SettingsView.swift`, `App/Presentation/Settings/SettingsSidebar.swift`, `OpenChargeUITests/SettingsNavigationTests.swift`.
   - Commit: `feat: add settings navigation shell`
 
-- [ ] **P3-04: Add reusable feature settings rows**
+- [x] **P3-04: Add reusable feature settings rows**
   - Depends on: P3-03.
   - Acceptance: Row shows title, description, enablement, availability, health, and recovery without hardcoded feature-specific branching.
   - Verify: TEST, UI, and FORMAT.
