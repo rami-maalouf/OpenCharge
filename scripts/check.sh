@@ -21,3 +21,14 @@ xcodebuild \
     -configuration Debug \
     -destination 'platform=macOS' \
     test
+
+if [[ "${OPENCHARGE_VERIFY_RELEASE:-0}" == "1" ]]; then
+    xcodebuild \
+        -project OpenCharge.xcodeproj \
+        -scheme OpenCharge \
+        -configuration Release \
+        -destination 'generic/platform=macOS' \
+        build
+
+    ./scripts/verify-universal.sh
+fi

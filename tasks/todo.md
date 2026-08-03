@@ -139,7 +139,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `OpenCharge.xcodeproj/project.pbxproj`, `App/OpenCharge.entitlements`, `App/Resources/Info.plist`, `FinderExtension/FinderExtension.entitlements`, `FinderExtension/Resources/Info.plist`.
   - Commit: `chore: configure opencharge target capabilities`
 
-- [ ] **P0-08: Verify Universal 2 release output**
+- [x] **P0-08: Verify Universal 2 release output**
   - Depends on: P0-07.
   - Acceptance: Script locates the Release executable deterministically and fails unless both `arm64` and `x86_64` slices exist; CHECK invokes it only for release verification.
   - Verify: RELEASE and DOCS.
