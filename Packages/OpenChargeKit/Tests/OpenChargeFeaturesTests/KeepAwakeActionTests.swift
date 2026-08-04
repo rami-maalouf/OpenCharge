@@ -92,6 +92,24 @@ struct KeepAwakeActionTests {
         #expect(state == KeepAwakeState(configuration: .idleSystemAndDisplay))
         #expect(await controller.appliedConfigurations.isEmpty)
     }
+
+    @Test
+    func stateUpdatesIncludeCurrentAndExternallyAppliedState() async {
+        let controller = KeepAwakeControllerProbe()
+        let action = KeepAwakeAction(controller: controller)
+        let updates = await action.stateUpdates()
+        var iterator = updates.makeAsyncIterator()
+
+        let initialState = await iterator.next()
+        _ = await action.set(.idleSystemAndDisplay)
+        let updatedState = await iterator.next()
+
+        #expect(initialState == KeepAwakeState(configuration: .disabled))
+        #expect(
+            updatedState
+                == KeepAwakeState(configuration: .idleSystemAndDisplay)
+        )
+    }
 }
 
 private enum KeepAwakeProbeError: Error {

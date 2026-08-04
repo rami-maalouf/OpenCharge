@@ -6,6 +6,7 @@ import OpenChargeFeatures
 @Observable
 final class KeepAwakeModel {
     private let action: KeepAwakeAction
+    @ObservationIgnored private var actionObservationTask: Task<Void, Never>?
     private let settingsStore: any SettingsStore
     private var lastEnabledConfiguration = KeepAwakeConfiguration.idleSystem
     private var lastRequestedConfiguration: KeepAwakeConfiguration?
@@ -20,6 +21,20 @@ final class KeepAwakeModel {
     ) {
         self.action = action
         self.settingsStore = settingsStore
+        actionObservationTask = Task { @MainActor [weak self, action] in
+            let updates = await action.stateUpdates()
+            for await _ in updates {
+                guard let self, !Task.isCancelled else {
+                    return
+                }
+                let currentState = await action.currentState()
+                synchronize(with: currentState)
+            }
+        }
+    }
+
+    deinit {
+        actionObservationTask?.cancel()
     }
 
     var configuration: KeepAwakeConfiguration {
@@ -169,6 +184,11 @@ final class KeepAwakeModel {
             return
         }
         lastEnabledConfiguration = configuration
+    }
+
+    private func synchronize(with observedState: KeepAwakeState) {
+        state = observedState
+        rememberEnabledConfiguration(observedState.configuration)
     }
 
     private static func configuration(

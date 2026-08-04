@@ -123,6 +123,21 @@ final class KeepAwakeModelTests: XCTestCase {
     }
 
     @MainActor
+    func testObservesChangesAppliedOutsideThePresentationModel() async {
+        let store = InMemorySettingsStore()
+        let controller = KeepAwakeControllerProbe()
+        let action = KeepAwakeAction(controller: controller)
+        let model = KeepAwakeModel(action: action, settingsStore: store)
+
+        _ = await action.set(.idleSystemAndDisplay)
+        await waitForModelToObserveAction(model)
+
+        XCTAssertEqual(model.configuration, .idleSystemAndDisplay)
+        XCTAssertTrue(model.isEnabled)
+        XCTAssertTrue(model.preventsDisplaySleep)
+    }
+
+    @MainActor
     private func makeModel(
         controller: KeepAwakeControllerProbe,
         store: any SettingsStore
@@ -131,6 +146,15 @@ final class KeepAwakeModelTests: XCTestCase {
             action: KeepAwakeAction(controller: controller),
             settingsStore: store
         )
+    }
+
+    @MainActor
+    private func waitForModelToObserveAction(
+        _ model: KeepAwakeModel
+    ) async {
+        for _ in 0 ..< 20 where model.configuration != .idleSystemAndDisplay {
+            await Task.yield()
+        }
     }
 }
 
