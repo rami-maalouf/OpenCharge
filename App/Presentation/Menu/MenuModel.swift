@@ -1,4 +1,5 @@
 import OpenChargeCore
+import OpenChargeFeatures
 
 enum MenuStaticItem: CaseIterable, Equatable {
     case settings
@@ -23,6 +24,7 @@ struct MenuFeatureSection: Identifiable, Equatable {
 }
 
 struct MenuModel {
+    let favoriteFeatures: [FeatureDescriptor]
     let featureSections: [MenuFeatureSection]
     let health: MenuHealth
     let staticItems = MenuStaticItem.allCases
@@ -30,16 +32,17 @@ struct MenuModel {
     init(
         registry: FeatureRegistry,
         settings: SettingsSchema,
+        preferences: MenuPreferences = .default,
         loadState: AppLoadState
     ) {
-        featureSections = FeatureCategory.allCases.compactMap { category in
-            let features = registry.descriptors.filter { descriptor in
-                descriptor.category == category && settings.isFeatureEnabled(descriptor.id)
-            }
-            guard !features.isEmpty else {
-                return nil
-            }
-            return MenuFeatureSection(category: category, features: features)
+        let configuration = MenuConfiguration(
+            registry: registry,
+            settings: settings,
+            preferences: preferences
+        )
+        favoriteFeatures = configuration.favoriteFeatures
+        featureSections = configuration.sections.map { section in
+            MenuFeatureSection(category: section.category, features: section.features)
         }
 
         if loadState == .failed {

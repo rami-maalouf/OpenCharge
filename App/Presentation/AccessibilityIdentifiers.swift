@@ -9,11 +9,38 @@ enum AccessibilityID {
         static let keepAwake = "menu.keepAwake"
         static let quit = "menu.quit"
         static let settings = "menu.settings"
+
+        static func feature(_ id: FeatureID) -> String {
+            "menu.feature.\(id.rawValue)"
+        }
     }
 
     enum Settings {
         static let appearance = "settings.general.appearance"
         static let launchAtLogin = "settings.general.launchAtLogin"
+
+        static let menuError = "settings.menu.error"
+        static let menuIcon = "settings.menu.icon"
+
+        static func menuFavorite(_ id: FeatureID) -> String {
+            "settings.menu.favorite.\(id.rawValue)"
+        }
+
+        static func menuMoveDown(_ id: FeatureID) -> String {
+            "settings.menu.moveDown.\(id.rawValue)"
+        }
+
+        static func menuMoveUp(_ id: FeatureID) -> String {
+            "settings.menu.moveUp.\(id.rawValue)"
+        }
+
+        static func menuRow(_ id: FeatureID) -> String {
+            "settings.menu.row.\(id.rawValue)"
+        }
+
+        static func menuVisibility(_ id: FeatureID) -> String {
+            "settings.menu.visibility.\(id.rawValue)"
+        }
 
         static let finderCopyPathToggle = "settings.finder.copyPath.toggle"
         static let finderExtensionStatus = "settings.finder.extension.status"

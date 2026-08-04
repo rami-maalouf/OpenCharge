@@ -18,12 +18,18 @@ struct OpenChargeApp: App {
     init(dependencies: AppDependencies) {
         UITestDisplayRouter.installIfRequested()
         KeepAwakeIntentDependency.register(dependencies.keepAwakeAction)
-        _model = State(initialValue: AppModel(dependencies: dependencies))
+        let model = AppModel(dependencies: dependencies)
+        _model = State(initialValue: model)
         applicationDelegate.configure(
             lifecycleController: AppLifecycleController(
                 keepAwakeAction: dependencies.keepAwakeAction
             ),
-            servicesProvider: ServicesProvider()
+            servicesProvider: ServicesProvider(),
+            launchHandler: {
+                Task {
+                    await model.load()
+                }
+            }
         )
     }
 
@@ -31,9 +37,12 @@ struct OpenChargeApp: App {
         MenuBarExtra {
             MenuContentView(appModel: model)
         } label: {
-            Label("OpenCharge", systemImage: "bolt.fill")
-                .accessibilityLabel("OpenCharge")
-                .accessibilityIdentifier(AccessibilityID.menuBar)
+            Label(
+                "OpenCharge",
+                systemImage: model.menu.preferences.iconChoice.systemImage
+            )
+            .accessibilityLabel("OpenCharge")
+            .accessibilityIdentifier(AccessibilityID.menuBar)
         }
         .menuBarExtraStyle(.menu)
 

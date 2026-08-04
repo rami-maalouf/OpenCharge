@@ -333,6 +333,66 @@
     },
     "The Finder extension is not installed in this build. Copy Path remains available through Services." : {
 
+    },
+    "Actions" : {
+
+    },
+    "Add to Favorites" : {
+
+    },
+    "Bolt" : {
+
+    },
+    "Bolt in Circle" : {
+
+    },
+    "Capture Text" : {
+
+    },
+    "Choose favorites, visibility, order, and the menu bar icon." : {
+
+    },
+    "Clear Clipboard" : {
+
+    },
+    "Clear the current clipboard contents without retaining history." : {
+
+    },
+    "Dismiss" : {
+
+    },
+    "Drag rows or use the move buttons to set their menu order." : {
+
+    },
+    "Gauge" : {
+
+    },
+    "Menu bar icon" : {
+
+    },
+    "No Configurable Actions" : {
+
+    },
+    "OpenCharge could not save the menu configuration. Try again." : {
+
+    },
+    "Recognize text in a selected screen region." : {
+
+    },
+    "Remove from Favorites" : {
+
+    },
+    "Show" : {
+
+    },
+    "Shown" : {
+
+    },
+    "Hidden" : {
+
+    },
+    "Actions appear here when they are included in OpenCharge." : {
+
     }
   },
   "version" : "1.2"

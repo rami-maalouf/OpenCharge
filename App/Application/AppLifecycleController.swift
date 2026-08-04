@@ -33,19 +33,24 @@ actor AppLifecycleController {
 final class OpenChargeApplicationDelegate: NSObject, NSApplicationDelegate {
     private var hasCompletedTerminationCleanup = false
     private var isTerminationPending = false
+    private var launchHandler: (() -> Void)?
     private var lifecycleController: AppLifecycleController?
     private var servicesProvider: ServicesProvider?
 
     func configure(
         lifecycleController: AppLifecycleController,
-        servicesProvider: ServicesProvider
+        servicesProvider: ServicesProvider,
+        launchHandler: @escaping () -> Void = {}
     ) {
         self.lifecycleController = lifecycleController
         self.servicesProvider = servicesProvider
+        self.launchHandler = launchHandler
     }
 
     func applicationDidFinishLaunching(_: Notification) {
         NSApplication.shared.servicesProvider = servicesProvider
+        launchHandler?()
+        launchHandler = nil
     }
 
     func applicationShouldTerminate(

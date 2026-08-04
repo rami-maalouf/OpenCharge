@@ -34,18 +34,7 @@ struct SettingsView: View {
         case .finder:
             FinderSettingsView(model: appModel.finder)
         case .menu:
-            VStack(alignment: .leading, spacing: 12) {
-                Label(selection.title, systemImage: selection.systemImage)
-                    .font(.title2.bold())
-                    .accessibilityIdentifier(AccessibilityID.Settings.section(selection))
-
-                Text(sectionDescription)
-                    .foregroundStyle(.secondary)
-
-                Spacer()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .padding(24)
+            MenuSettingsView(model: appModel.menu)
         }
     }
 

@@ -60,6 +60,41 @@ final class MenuModelTests: XCTestCase {
         XCTAssertEqual(model.health, .settingsUnavailable)
         XCTAssertEqual(model.staticItems, MenuStaticItem.allCases)
     }
+
+    @MainActor
+    func testAppliesFavoriteVisibilityAndCustomOrder() throws {
+        let keepAwakeID = try XCTUnwrap(FeatureID(rawValue: "foundation.keep-awake"))
+        let captureTextID = try XCTUnwrap(FeatureID(rawValue: "foundation.capture-text"))
+        let clearClipboardID = try XCTUnwrap(
+            FeatureID(rawValue: "foundation.clear-clipboard")
+        )
+        let registry = FeatureRegistry(factories: [
+            factory(id: keepAwakeID, category: .foundation),
+            factory(id: captureTextID, category: .foundation),
+            factory(id: clearClipboardID, category: .foundation)
+        ])
+        var settings = SettingsSchema.default
+        for id in [keepAwakeID, captureTextID, clearClipboardID] {
+            settings.setFeature(id, enabled: true)
+        }
+        let preferences = MenuPreferences(
+            favoriteFeatureIDs: [clearClipboardID],
+            hiddenFeatureIDs: [captureTextID],
+            orderedFeatureIDs: [clearClipboardID, captureTextID, keepAwakeID],
+            iconChoice: .bolt,
+            shortcutReferences: [:]
+        )
+
+        let model = MenuModel(
+            registry: registry,
+            settings: settings,
+            preferences: preferences,
+            loadState: .loaded
+        )
+
+        XCTAssertEqual(model.favoriteFeatures.map(\.id), [clearClipboardID])
+        XCTAssertEqual(model.featureSections.flatMap(\.features).map(\.id), [keepAwakeID])
+    }
 }
 
 private enum FactoryFailure: Error {

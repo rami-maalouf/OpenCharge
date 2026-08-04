@@ -126,6 +126,41 @@ struct MenuPreferencesTests {
         #expect(decoded == preferences)
     }
 
+    @Test
+    func preferencesRoundTripThroughVersionedSettingsConfiguration() throws {
+        let keepAwakeID = try featureID("foundation.keep-awake")
+        let captureTextID = try featureID("foundation.capture-text")
+        let preferences = try MenuPreferences(
+            favoriteFeatureIDs: [keepAwakeID],
+            hiddenFeatureIDs: [captureTextID],
+            orderedFeatureIDs: [captureTextID, keepAwakeID],
+            iconChoice: .gauge,
+            shortcutReferences: [
+                captureTextID: shortcutReference("shortcut.capture-text")
+            ]
+        )
+        var settings = SettingsSchema.default
+
+        preferences.write(to: &settings)
+        let decoded = MenuPreferences(settings: settings)
+
+        #expect(decoded == preferences)
+    }
+
+    @Test
+    func malformedStoredPreferenceValuesFallBackSafely() {
+        let invalidKey = SettingsKey(rawValue: "menu.favorite-feature-ids")
+        var settings = SettingsSchema.default
+        settings[.menuFavoriteFeatureIDs] = .stringList(["invalid", "", "No Spaces"])
+        settings[.menuIconChoice] = .string("missing-icon")
+        settings[.menuShortcutReferences] = .stringList(["invalid", "a=b=c"])
+
+        let preferences = MenuPreferences(settings: settings)
+
+        #expect(invalidKey == .menuFavoriteFeatureIDs)
+        #expect(preferences == .default)
+    }
+
     private func featureID(_ rawValue: String) throws -> FeatureID {
         try #require(FeatureID(rawValue: rawValue))
     }

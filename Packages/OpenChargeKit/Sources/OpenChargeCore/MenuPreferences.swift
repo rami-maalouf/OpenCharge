@@ -71,6 +71,22 @@ public struct MenuPreferences: Equatable, Codable, Sendable {
         self.shortcutReferences = shortcutReferences
     }
 
+    public init(settings: SettingsSchema) {
+        favoriteFeatureIDs = Self.featureIDs(from: settings[.menuFavoriteFeatureIDs])
+        hiddenFeatureIDs = Self.featureIDs(from: settings[.menuHiddenFeatureIDs])
+        orderedFeatureIDs = Self.orderedFeatureIDs(from: settings[.menuOrderedFeatureIDs])
+        if case let .string(rawIconChoice) = settings[.menuIconChoice],
+           let iconChoice = MenuIconChoice(rawValue: rawIconChoice)
+        {
+            self.iconChoice = iconChoice
+        } else {
+            iconChoice = Self.default.iconChoice
+        }
+        shortcutReferences = Self.shortcutReferences(
+            from: settings[.menuShortcutReferences]
+        )
+    }
+
     public func sanitized(for descriptors: [FeatureDescriptor]) -> Self {
         let knownFeatureIDs = Set(descriptors.map(\.id))
         let shortcutFeatureIDs = Set(
@@ -91,5 +107,61 @@ public struct MenuPreferences: Equatable, Codable, Sendable {
                 shortcutFeatureIDs.contains(featureID)
             }
         )
+    }
+
+    public func write(to settings: inout SettingsSchema) {
+        settings[.menuFavoriteFeatureIDs] = .stringList(
+            favoriteFeatureIDs.sorted().map(\.rawValue)
+        )
+        settings[.menuHiddenFeatureIDs] = .stringList(
+            hiddenFeatureIDs.sorted().map(\.rawValue)
+        )
+        settings[.menuOrderedFeatureIDs] = .stringList(
+            orderedFeatureIDs.map(\.rawValue)
+        )
+        settings[.menuIconChoice] = .string(iconChoice.rawValue)
+        settings[.menuShortcutReferences] = .stringList(
+            shortcutReferences.keys.sorted().compactMap { featureID in
+                shortcutReferences[featureID].map {
+                    "\(featureID.rawValue)=\($0.rawValue)"
+                }
+            }
+        )
+    }
+
+    private static func featureIDs(from value: SettingsValue?) -> Set<FeatureID> {
+        Set(orderedFeatureIDs(from: value))
+    }
+
+    private static func orderedFeatureIDs(from value: SettingsValue?) -> [FeatureID] {
+        guard case let .stringList(rawFeatureIDs) = value else {
+            return []
+        }
+        return rawFeatureIDs.compactMap(FeatureID.init(rawValue:))
+    }
+
+    private static func shortcutReferences(
+        from value: SettingsValue?
+    ) -> [FeatureID: MenuShortcutReference] {
+        guard case let .stringList(rawReferences) = value else {
+            return [:]
+        }
+
+        return rawReferences.reduce(into: [:]) { references, rawReference in
+            let components = rawReference.split(
+                separator: "=",
+                maxSplits: 1,
+                omittingEmptySubsequences: false
+            )
+            guard components.count == 2,
+                  let featureID = FeatureID(rawValue: String(components[0])),
+                  let shortcutReference = MenuShortcutReference(
+                      rawValue: String(components[1])
+                  )
+            else {
+                return
+            }
+            references[featureID] = shortcutReference
+        }
     }
 }

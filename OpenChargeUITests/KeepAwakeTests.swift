@@ -53,9 +53,14 @@ final class KeepAwakeTests: XCTestCase {
         add(attachment)
 
         app.typeKey("w", modifierFlags: .command)
-        let builtInDisplayBounds = try XCTUnwrap(builtInDisplayBounds())
-        revealMenuBar(on: builtInDisplayBounds)
-        let menuBarItem = menuBarItem(in: app, displayBounds: builtInDisplayBounds)
+        let builtInDisplayBounds = try XCTUnwrap(
+            MenuBarTestSupport.builtInDisplayBounds()
+        )
+        MenuBarTestSupport.revealMenuBar(on: builtInDisplayBounds)
+        let menuBarItem = MenuBarTestSupport.menuBarItem(
+            in: app,
+            displayBounds: builtInDisplayBounds
+        )
         XCTAssertTrue(menuBarItem.waitForExistence(timeout: 2))
         menuBarItem.coordinate(
             withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)
@@ -72,54 +77,6 @@ final class KeepAwakeTests: XCTestCase {
     private func openSettings(in app: XCUIApplication) {
         app.activate()
         app.typeKey(",", modifierFlags: .command)
-    }
-
-    @MainActor
-    private func revealMenuBar(on displayBounds: CGRect) {
-        let point = CGPoint(x: displayBounds.midX, y: displayBounds.minY + 1)
-        CGEvent(
-            mouseEventSource: nil,
-            mouseType: .mouseMoved,
-            mouseCursorPosition: point,
-            mouseButton: .left
-        )?.post(tap: .cghidEventTap)
-        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-    }
-
-    @MainActor
-    private func menuBarItem(
-        in app: XCUIApplication,
-        displayBounds: CGRect
-    ) -> XCUIElement {
-        let matches = app.statusItems.matching(identifier: "menuBar.openCharge")
-        let expandedBounds = displayBounds.insetBy(dx: -1, dy: -30)
-        return matches.allElementsBoundByIndex.first { element in
-            expandedBounds.contains(
-                CGPoint(x: element.frame.midX, y: element.frame.midY)
-            )
-        } ?? matches.firstMatch
-    }
-
-    private func builtInDisplayBounds() -> CGRect? {
-        var displayCount: UInt32 = 0
-        guard CGGetActiveDisplayList(0, nil, &displayCount) == .success else {
-            return nil
-        }
-
-        var displays = [CGDirectDisplayID](
-            repeating: 0,
-            count: Int(displayCount)
-        )
-        guard CGGetActiveDisplayList(
-            displayCount,
-            &displays,
-            &displayCount
-        ) == .success,
-            let display = displays.first(where: { CGDisplayIsBuiltin($0) != 0 })
-        else {
-            return nil
-        }
-        return CGDisplayBounds(display)
     }
 
     @MainActor

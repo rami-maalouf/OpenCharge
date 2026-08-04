@@ -421,7 +421,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
   - Files: `Packages/OpenChargeKit/Sources/OpenChargeCore/MenuPreferences.swift`, `Packages/OpenChargeKit/Sources/OpenChargeFeatures/MenuConfiguration.swift`, `Packages/OpenChargeKit/Tests/OpenChargeFeaturesTests/MenuPreferencesTests.swift`.
   - Commit: `feat: model configurable menu preferences`
 
-- [ ] **P7-02: Build menu configuration UI**
+- [x] **P7-02: Build menu configuration UI**
   - Depends on: P7-01.
   - Acceptance: User can favorite, show, hide, and reorder features with keyboard and pointer; changes immediately update the menu.
   - Verify: UI and manually test reordering with VoiceOver and keyboard.

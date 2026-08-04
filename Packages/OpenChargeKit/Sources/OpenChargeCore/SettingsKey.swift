@@ -38,6 +38,19 @@ public struct SettingsKey: RawRepresentable, Hashable, Codable, Sendable, Compar
         uncheckedRawValue: "foundation.keep-awake.configuration"
     )
     public static let launchAtLogin = Self(uncheckedRawValue: "general.launch-at-login")
+    public static let menuFavoriteFeatureIDs = Self(
+        uncheckedRawValue: "menu.favorite-feature-ids"
+    )
+    public static let menuHiddenFeatureIDs = Self(
+        uncheckedRawValue: "menu.hidden-feature-ids"
+    )
+    public static let menuIconChoice = Self(uncheckedRawValue: "menu.icon-choice")
+    public static let menuOrderedFeatureIDs = Self(
+        uncheckedRawValue: "menu.ordered-feature-ids"
+    )
+    public static let menuShortcutReferences = Self(
+        uncheckedRawValue: "menu.shortcut-references"
+    )
     public static let showsMenuBarIcon = Self(uncheckedRawValue: "general.shows-menu-bar-icon")
 
     private init(uncheckedRawValue: String) {

@@ -1,3 +1,4 @@
+import AppKit
 @testable import OpenCharge
 import OpenChargeCore
 import OpenChargeSystem
@@ -48,6 +49,65 @@ final class AppCompositionTests: XCTestCase {
 
         XCTAssertEqual(model.loadState, .loaded)
         XCTAssertFalse(model.hasPersistentSettings)
+    }
+
+    @MainActor
+    func testCompositionIncludesBaselineFeatureWithoutActivatingItsAction() async throws {
+        let featureID = try XCTUnwrap(FeatureID(rawValue: "foundation.keep-awake"))
+        let registry = FeatureRegistry(factories: [
+            FeatureFactory(id: featureID) {
+                FeatureDescriptor(
+                    id: featureID,
+                    category: .foundation,
+                    titleKey: "Keep Awake",
+                    descriptionKey: "Controls whether OpenCharge prevents system sleep.",
+                    supportsGlobalShortcut: true,
+                    supportsAppIntent: true
+                )
+            }
+        ])
+        let store = InMemorySettingsStore()
+        let model = AppModel(
+            dependencies: AppDependencies(
+                registry: registry,
+                baselineFeatureIDs: [featureID],
+                settingsStore: store,
+                hasPersistentSettings: false
+            )
+        )
+
+        await model.load()
+
+        XCTAssertTrue(model.settings.isFeatureEnabled(featureID))
+        XCTAssertEqual(model.keepAwake.configuration, .disabled)
+        XCTAssertEqual(model.menu.features.map(\.id), [featureID])
+        let storedSettings = await store.snapshot()
+        XCTAssertTrue(storedSettings.isFeatureEnabled(featureID))
+    }
+
+    @MainActor
+    func testApplicationDelegateRunsLaunchHandlerOnlyOnce() {
+        let dependencies = AppDependencies.preview
+        let delegate = OpenChargeApplicationDelegate()
+        var launchCount = 0
+        delegate.configure(
+            lifecycleController: AppLifecycleController(
+                keepAwakeAction: dependencies.keepAwakeAction
+            ),
+            servicesProvider: ServicesProvider(),
+            launchHandler: {
+                launchCount += 1
+            }
+        )
+
+        delegate.applicationDidFinishLaunching(
+            Notification(name: NSApplication.didFinishLaunchingNotification)
+        )
+        delegate.applicationDidFinishLaunching(
+            Notification(name: NSApplication.didFinishLaunchingNotification)
+        )
+
+        XCTAssertEqual(launchCount, 1)
     }
 }
 

@@ -11,35 +11,29 @@ struct MenuContentView: View {
         MenuModel(
             registry: appModel.registry,
             settings: appModel.settings,
+            preferences: appModel.menu.preferences,
             loadState: appModel.loadState
         )
     }
 
     var body: some View {
-        Section("Foundation") {
-            Button {
-                Task { @MainActor in
-                    await appModel.keepAwake.toggle()
+        if !model.favoriteFeatures.isEmpty {
+            Section("Favorites") {
+                ForEach(model.favoriteFeatures) { feature in
+                    featureButton(feature)
                 }
-            } label: {
-                Label(keepAwakeMenuTitle, systemImage: keepAwakeSystemImage)
             }
-            .accessibilityLabel("Keep Awake")
-            .accessibilityValue(keepAwakeModeTitle)
-            .accessibilityIdentifier(AccessibilityID.Menu.keepAwake)
-            .disabled(appModel.keepAwake.isUpdating)
         }
 
         ForEach(model.featureSections) { section in
             Section(section.category.menuTitle) {
                 ForEach(section.features) { feature in
-                    Button(String(localized: .init(feature.titleKey))) {}
-                        .disabled(true)
+                    featureButton(feature)
                 }
             }
         }
 
-        if !model.featureSections.isEmpty {
+        if !model.favoriteFeatures.isEmpty || !model.featureSections.isEmpty {
             Divider()
         }
 
@@ -70,10 +64,26 @@ struct MenuContentView: View {
         }
         .keyboardShortcut("q")
         .accessibilityIdentifier(AccessibilityID.Menu.quit)
-        .task {
-            if appModel.loadState == .idle {
-                await appModel.load()
+    }
+
+    @ViewBuilder
+    private func featureButton(_ feature: FeatureDescriptor) -> some View {
+        if feature.id.rawValue == "foundation.keep-awake" {
+            Button {
+                Task { @MainActor in
+                    await appModel.keepAwake.toggle()
+                }
+            } label: {
+                Label(keepAwakeMenuTitle, systemImage: keepAwakeSystemImage)
             }
+            .accessibilityLabel("Keep Awake")
+            .accessibilityValue(keepAwakeModeTitle)
+            .accessibilityIdentifier(AccessibilityID.Menu.keepAwake)
+            .disabled(appModel.keepAwake.isUpdating)
+        } else {
+            Button(String(localized: .init(feature.titleKey))) {}
+                .disabled(true)
+                .accessibilityIdentifier(AccessibilityID.Menu.feature(feature.id))
         }
     }
 
