@@ -1,21 +1,22 @@
 # C0 Architecture Scaffold Checkpoint
 
-Status: foreground verification pending
+Status: complete
 
-Last updated: 2026-08-03
+Last updated: 2026-08-04
 
-Milestone 0 is implemented and its non-interactive verification passes. This checkpoint remains open because Finder, Services, and appearance checks require control of the active macOS session. Those checks are intentionally deferred while the computer is in use.
+Milestone 0 is implemented and verified. Automated, foreground, Finder, Services, App Intents, appearance, accessibility, power-lifecycle, Release, and Universal 2 checks pass on the target platform.
 
 ## Automated evidence
 
 | Check | Command | Result |
 | --- | --- | --- |
-| Formatting | `swiftformat --lint .` | Passed with 0 files requiring formatting. |
-| Package tests | `swift test --package-path Packages/OpenChargeKit` | Passed all 94 tests in 21 suites. |
+| Full check | `./scripts/check.sh` | Passed on 2026-08-04, including formatting, package tests, debug test build, app-hosted tests, and all 9 UI tests. |
+| Formatting | `swiftformat --lint .` | Passed with 0 of 109 files requiring formatting. |
+| Package tests | `swift test --package-path Packages/OpenChargeKit` | Passed all package tests, including cross-surface Keep Awake observation. |
 | Debug test build | `xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -configuration Debug -destination 'platform=macOS' build-for-testing` | Passed, including the app, Finder extension, app tests, and UI test bundle. |
-| App-hosted unit tests | `xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -configuration Debug -destination 'platform=macOS' -skip-testing:OpenChargeUITests test-without-building` | Passed all app-hosted tests without running UI automation. |
-| Release build | `xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -configuration Release -destination 'generic/platform=macOS' build` | Passed. |
-| Universal binaries | `./scripts/verify-universal.sh` | Passed for the app and Finder extension with `arm64` and `x86_64` slices. |
+| App-hosted unit tests | `xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -configuration Debug -destination 'platform=macOS' -skip-testing:OpenChargeUITests test-without-building` | Passed all app-hosted tests, including external Keep Awake action synchronization and termination cleanup. |
+| Release build | `xcodebuild -project OpenCharge.xcodeproj -scheme OpenCharge -configuration Release -destination 'generic/platform=macOS' build` | Passed again after the final C0 fix on 2026-08-04. |
+| Universal binaries | `./scripts/verify-universal.sh` | Passed after the final Release build for the app and Finder extension with `arm64` and `x86_64` slices. |
 
 ## Automated behavior coverage
 
@@ -32,22 +33,29 @@ Milestone 0 is implemented and its non-interactive verification passes. This che
 
 ## Foreground verification checklist
 
-Run these checks in one dedicated session when foreground control is acceptable. Record the macOS build, display arrangement, result, and any issue link beside each item.
+Foreground verification ran on macOS 26.5.2 (25F84), on a MacBook Pro with one active built-in 3456 x 2234 Liquid Retina XDR display. No external display was online.
 
-- [ ] Open the menu bar item and inspect its static actions, Keep Awake state, Settings action, and Quit action.
-- [ ] Open every Settings section and confirm window sizing, sidebar selection, keyboard navigation, focus rings, truncation, and scrolling.
-- [ ] Enable and disable Keep Awake from the menu and Settings, then confirm both surfaces immediately show the same state.
-- [ ] Run Get Keep Awake Mode and Set Keep Awake Mode from Shortcuts and confirm they observe the same state as the app.
-- [ ] Enable the Finder extension in System Settings and copy paths for a file, folder, app package, selection with spaces, Unicode selection, and multiple selection.
-- [ ] Invoke Services > Copy Path for the same fixture and confirm its output exactly matches the Finder action.
-- [ ] Verify the Services fallback from at least one supported synced folder where Finder Sync actions are absent.
-- [ ] Disable the Finder extension and confirm the main app, Settings, Keep Awake, and Services remain usable.
-- [ ] Deny or leave optional permissions unresolved and confirm every Settings recovery path remains visible without blocking unrelated features.
-- [ ] Inspect the menu and every Settings section in Light appearance.
-- [ ] Inspect the menu and every Settings section in Dark appearance.
-- [ ] Increase the system text size and confirm labels remain readable without clipped controls or unreachable content.
-- [ ] Quit OpenCharge while Keep Awake is enabled and confirm no power assertion remains.
+- [x] Menu inspection exposed Keep Awake, permission health, Settings, About, and Quit. Static-item assertions and the real status item passed UI automation.
+- [x] General, Menu, Foundation, Finder, Permissions, and About opened by Command-1 through Command-6. Sidebar state, window bounds, focus behavior, truncation, and scroll reachability passed automated checks and screenshot inspection.
+- [x] Keep Awake changed between Off, System Sleep, and System and Display Sleep. Settings and the menu immediately reported the same observed state.
+- [x] Shortcuts discovered Get Keep Awake Mode and Set Keep Awake Mode from a signed app. Get returned Off, Set created the named `OpenCharge Keep Awake` assertion, and Set Off removed it. The app now observes changes applied through App Intents, covered by commit `b7c9f97`.
+- [x] Finder Sync was enabled for a disposable fixture and copied a file, folder, app package, names with spaces, Unicode names, and an ordered multiple selection exactly.
+- [x] Services > Copy Path copied the same local fixture with exactly the same newline-delimited output and input order.
+- [x] The Services fallback copied an iCloud Drive fixture where the Finder Sync action was unavailable.
+- [x] With Finder Sync disabled, the app, every Settings route, Keep Awake, and the Services fallback remained usable. Finder guidance reported the disabled state and its recovery route.
+- [x] Screen Recording and Accessibility were left denied or unresolved. Their explanations and recovery actions remained visible while General, Foundation, Finder, and About stayed usable.
+- [x] The menu and all six Settings routes passed UI automation and screenshot inspection in Light appearance without illegible contrast, clipping, or unreachable controls.
+- [x] The menu and all six Settings routes passed UI automation and screenshot inspection in Dark appearance without illegible contrast, clipping, or unreachable controls.
+- [x] Preferred reading size was increased from Default to 13 pt. All six routes remained reachable and readable; the system setting was restored to Default afterward.
+- [x] The Quit command terminated the app, and Keep Awake lifecycle coverage terminated an enabled app. A final `pmset -g assertions` check contained no OpenCharge-owned power assertion.
+
+## Session cleanup
+
+- The temporary Shortcuts workflow was deleted and the Shortcuts library returned from 24 to 23 items.
+- Finder Sync and Services > Files and Folders > Copy Path were restored to their original disabled state.
+- System appearance was restored to Dark and preferred reading size to Default.
+- Disposable local, iCloud Drive, signed-build, and screenshot fixtures were moved to Trash after evidence was recorded.
 
 ## Completion rule
 
-Do not mark `C0-01` complete until every foreground item above has evidence and `./scripts/check.sh` passes in a session where UI automation may control focus and the pointer. The full check script includes `OpenChargeUITests` and therefore must not run while another person is using the desktop.
+`C0-01` is complete because every foreground item above has evidence, `./scripts/check.sh` passes in a dedicated desktop session, and the final Release and Universal 2 checks pass.

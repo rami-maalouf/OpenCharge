@@ -8,7 +8,7 @@ OpenCharge is inspired by the broader macOS utility category. It uses its own im
 
 ## Project status
 
-The Milestone 0 implementation is complete. Automated package, application, Release, and Universal 2 verification passes. The architecture checkpoint remains open until its foreground Finder, Services, App Intents, appearance, and accessibility checklist is completed in a dedicated desktop session.
+Milestone 0 and its architecture checkpoint are complete. Automated package, application, UI, Release, and Universal 2 verification passes, together with foreground Finder, Services, App Intents, appearance, accessibility, and power-lifecycle checks. Implementation now proceeds through the approved task list in dependency order.
 
 - [Foundation + Finder specification](docs/specs/001-opencharge-foundation-finder.md)
 - [Implementation plan](tasks/plan.md)

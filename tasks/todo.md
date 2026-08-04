@@ -405,7 +405,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## C0: Architecture Scaffold Checkpoint
 
-- [ ] **C0-01: Verify and document Milestone 0**
+- [x] **C0-01: Verify and document Milestone 0**
   - Depends on: P5-06, P6-06.
   - Acceptance: All Milestone 0 success criteria pass; manual evidence covers menu, Settings, Keep Awake, intents, Finder, Services, permissions, light and dark appearance, increased text, and extension-disabled behavior.
   - Verify: CHECK, RELEASE, UI, and the manual checklist recorded in the checkpoint file.
