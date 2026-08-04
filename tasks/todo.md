@@ -414,7 +414,7 @@ These waves describe maximum safe parallelism. Dependencies on individual tasks 
 
 ## P7: Menu Configuration and Shortcuts
 
-- [ ] **P7-01: Model menu preferences**
+- [x] **P7-01: Model menu preferences**
   - Depends on: C0-01.
   - Acceptance: Favorites, visibility, order, icon choice, and per-action shortcuts use stable IDs, sanitize stale entries, and produce deterministic menu sections.
   - Verify: `swift test --package-path Packages/OpenChargeKit --filter MenuPreferencesTests`, then PACKAGE and FORMAT.
